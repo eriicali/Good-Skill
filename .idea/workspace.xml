@@ -103,10 +103,11 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Dragon Tale Tutorial p01/Dragon Tale Tutorial p01" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -265,7 +266,7 @@
     </state>
     <state width="2517" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606699447994" />
     <state width="1132" height="205" key="GridCell.Tab.0.right/1440.23.1600.877/0.23.1440.806@1440.23.1600.877" timestamp="1606693260297" />
-    <state width="1132" height="205" key="GridCell.Tab.0.right/1440.23.1600.877/0.23.1440.808@1440.23.1600.877" timestamp="1606692572914" />
+    <state width="1132" height="205" key="GridCell.Tab.0.right/1440.23.1600.877/0.23.1440.808@1440.23.1600.877" timestamp="1606694524724" />
     <state x="1915" y="63" key="SettingsEditor" timestamp="1606691864018">
       <screen x="1440" y="23" width="1600" height="877" />
     </state>

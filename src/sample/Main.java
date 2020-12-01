@@ -4,7 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.event.*;
+import javafx.scene.layout.Pane;
 
 public class Main extends Application {
 
@@ -12,8 +15,17 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello preethi");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Button b = new Button("Click Me");
+        b.setText("Click me if you dare!");
+        Scene scene = new Scene(b, 400, 400);
+        primaryStage.setScene(scene);
+
         primaryStage.show();
+
+        //make stuff (buttons, etc.)
+        //add that stuff to a scene
+        //show that scene
+
     }
 
 
