@@ -26,13 +26,13 @@ public class Game extends Application {
         primaryStage.setTitle("Hello preethi");
         StackPane root = new StackPane();
         Scene scene = new Scene(root, 640, 480);
-        Image test = new Image("file:../../resources/menubg.gif");
+        Image test = new Image("file:/resources/menubg.gif");
         BackgroundImage bgImg = new BackgroundImage(test,
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
                 new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
 
-// put stuff in root as normal....
+        // put stuff in root as normal....
         ImagePattern pattern = new ImagePattern(test);
         scene.setFill(pattern);
         primaryStage.setScene(scene);
