@@ -60,8 +60,9 @@ public abstract class MapObject {
     protected double moveSpeed;
     protected double maxSpeed;
     protected double stopSpeed;//value that speed decrements by
-    protected double allSpeed;//gravity
-    protected double jumpStart;//terminal velocity
+    protected double fallSpeed;//gravity
+    protected double maxFallSpeed; //terminal velocity
+    protected double jumpStart;
     //longer u hold button for, builds up speed?
     protected double stopJumpSpeed;
 
@@ -205,7 +206,7 @@ public abstract class MapObject {
         this.dy = dy;
     }
 
-    public void setmapPostion(){
+    public void setMapPosition(){
         //every map object has 2 positon (local and global)
         //where to draw character
         //offset player back on screen if they exit it
