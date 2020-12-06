@@ -258,23 +258,18 @@ public class Player extends MapObject {
     public void draw(Graphics2D g) {
         setMapPosition();
         //draw fireballs
-        for(int i = 0; i < fireballs.size(); i++) {
+        for (int i = 0; i < fireballs.size(); i++) {
             fireballs.get(i).draw(g);
         }
-        if(flinching) {
-            long elapsed = (System.nanoTime() - flinchTimer)/1000000;
-            if (elapsed/100%2 == 0) {
+        if (flinching) {
+            long elapsed = (System.nanoTime() - flinchTimer) / 1000000;
+            if (elapsed / 100 % 2 == 0) {
                 return;
             }
         }
-        if(facingRight) {
-            g.drawImage(animation.getImage(), (int)(x+xmap - width / 2), (int) (y + ymap - height/2),null);
-        }
-        else {
-            g.drawImage(animation.getImage(), (int) (x + xmap - width / 2 + width),(int) (y+ymap-height/2),-width,height,null);
-        }
-
+        super.draw(g);
     }
+
 
 
 

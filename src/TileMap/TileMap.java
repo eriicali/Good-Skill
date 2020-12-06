@@ -107,14 +107,14 @@ public class TileMap
         return tileSize;
     }
     
-    public int getX()
+    public double getX()
     {
-        return (int) x;
+        return x;
     }
     
-    public int getY()
+    public double getY()
     {
-        return (int) y;
+        return y;
     }
     
     public int getWidth()
