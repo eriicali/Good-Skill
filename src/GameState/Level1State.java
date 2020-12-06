@@ -5,6 +5,7 @@ import Main.GamePanel;
 import TileMap.Background;
 import TileMap.TileMap;
 import java.awt.*;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import Entity.Enemies.*;
@@ -15,6 +16,7 @@ public class Level1State extends GameState {
 
     private Player player;
     private ArrayList<Enemy> enemies;
+    private ArrayList<Explosion> explosions;
     private HUD hud;
     
     public Level1State(GameStateManager gsm){
@@ -34,15 +36,32 @@ public class Level1State extends GameState {
         player = new Player(tileMap);
         player.setPosition(100,100);
 
-        //create enemy
-        enemies = new ArrayList<Enemy>();
-        Slugger s;
-        s = new Slugger(tileMap);
-        s.setPosition(100,100);
-        enemies.add(s);
+        populateEnemies();
+
+
+        explosions = new ArrayList<Explosion>();
 
         hud = new HUD(player);
 
+
+    }
+    private void populateEnemies(){
+        //create enemy
+        enemies = new ArrayList<Enemy>();
+
+        Slugger s;
+        Point[] points = new Point[] {
+            new Point(200,100),
+            new Point(860,200),
+            new Point(1525, 200),
+            new Point(1680, 200),
+            new Point(1800, 200)
+        };
+        for(int i= 0; i< points.length; i++) {
+            s = new Slugger(tileMap);
+            s.setPosition(points[i].x,points[i].y);
+            enemies.add(s);
+        }
 
     }
     public void update() {
@@ -50,10 +69,30 @@ public class Level1State extends GameState {
         tileMap.setPosition(GamePanel.WIDTH/2-player.getX(), GamePanel.HEIGHT/2-player.getY());
         //set background
         bg.setPosition(tileMap.getX(), tileMap.getY());
+        // attack enemies
+        player.checkAttack(enemies);
 
         //update all enemies
         for(int i = 0; i < enemies.size(); i++){
-            enemies.get(i).update();
+            Enemy e = enemies.get(i);
+            e.update();
+            if(e.isDead()) {
+                enemies.remove(i);
+                i--;
+                explosions.add(
+                        //idk why he didnt cast
+                        new Explosion((int) e.getX(), (int) e.getY())
+                );
+            }
+        }
+        //update explosions
+        for(int i =0; i< explosions.size(); i++){
+            Explosion e = explosions.get(i);
+            e.update();
+            if(e.shouldRemove()) {
+                explosions.remove(i);
+                i--;
+            }
         }
     }
     public void draw(Graphics2D g) {
@@ -69,6 +108,11 @@ public class Level1State extends GameState {
         //draw enemies
         for(int i=0; i<enemies.size(); i++){
             enemies.get(i).draw(g);
+        }
+        //draw explosions
+        for(int i = 0; i< explosions.size(); i++) {
+            explosions.get(i).setMapPosition((int)tileMap.getX(),(int)tileMap.getY());
+            explosions.get(i).draw(g);
         }
 
         //draw hud

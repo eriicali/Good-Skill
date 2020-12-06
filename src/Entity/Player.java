@@ -114,6 +114,56 @@ public class Player extends MapObject {
     public void setGliding(boolean b) {
         gliding = b;
     }
+    public void checkAttack(ArrayList<Enemy> enemies) {
+        //loop through enemies and check if they get hit by attack
+        for(int i= 0; i <enemies.size(); i++) {
+            Enemy e = enemies.get(i);
+            //scratch attack
+            if(scratching){
+                if(facingRight){
+                    if (e.getX() > x &&
+                        e.getX() < x + scratchRange &&
+                        e.getY() > y - height/2 &&
+                        e.getY() < y + height/2
+                    ) {
+                        e.hit(scratchDamage);
+                    }
+                }
+                else {
+                    if (e.getX() < x &&
+                        e.getX() > x + scratchRange &&
+                        e.getY() > y - height/2 &&
+                        e.getY() < y + height/2
+                    ) {
+                        e.hit(scratchDamage);
+                    }
+
+                }
+            }
+            for (int j = 0; j< fireballs.size(); j++) {
+                if (fireballs.get(j).intersects(e)){
+                    e.hit(fireBallDamage);
+                    fireballs.get(j).setHit();
+                    break;
+                }
+            }
+            // check enemies
+            if(intersects(e)) {
+                hit(e.getDamage());
+            }
+        }
+
+    }
+
+    public void hit(int damage) {
+        if(flinching) return;
+        health -= damage;
+        if(health < 0) health =0;
+        if(health == 0) dead = true;
+        flinching = true;
+        flinchTimer = System.nanoTime();
+    }
+
     private void getNextPosition() {
         //movement
         if(left){
@@ -188,6 +238,13 @@ public class Player extends MapObject {
             if(fireballs.get(i).shouldRemove()){
                 fireballs.remove(i);
                 i--;
+            }
+        }
+        //check done flinching
+        if (flinching) {
+            long elapsed = (System.nanoTime() - flinchTimer) / 1000000;
+            if (elapsed > 1000) {
+                flinching = false;
             }
         }
         

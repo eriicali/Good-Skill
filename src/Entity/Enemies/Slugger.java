@@ -98,7 +98,7 @@ public class Slugger extends Enemy{
         animation.update();
     }
     public void draw(Graphics2D g){
-        if(notOnScreen()) return;//only draw if on the screen
+        //if(notOnScreen()) return;//only draw if on the screen
         setMapPosition();
         super.draw(g);
 
