@@ -68,6 +68,7 @@ public abstract class MapObject {
 
     //added this
     protected int tileSize;
+    protected boolean remove;
 
     public MapObject(TileMap tm){
         //set tilemap
@@ -234,12 +235,18 @@ public abstract class MapObject {
         this.jumping = jumping;
     }
     //whether or not object is on screen ->draw or not
+    //screen moves with player in center
     public boolean notOnScreen(){
         return x+ xmap + width < 0 ||
                 x + xmap - width > GamePanel.WIDTH ||
                 y + ymap + height < 0 ||
                 y + ymap - height > GamePanel.HEIGHT;
     }
+    /*public void removeMapObject(){
+        if(this.notOnScreen()){
+            remove = true;
+        }
+    }*/
     public void draw (java.awt.Graphics2D g){
         if(facingRight) {
             g.drawImage(animation.getImage(), (int)(x+xmap - width / 2), (int) (y + ymap - height/2),null);

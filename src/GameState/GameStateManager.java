@@ -1,6 +1,7 @@
 package GameState;
 
 import java.util.ArrayList;
+import Entity.*;
 
 public class GameStateManager {
     private ArrayList<GameState> gameStates;
@@ -31,4 +32,5 @@ public class GameStateManager {
     public void keyReleased(int key) {
         gameStates.get(currentState).keyReleased(key);
     }
+
 }

@@ -129,10 +129,19 @@ public class TileMap
     
     public int getType(int row, int col)
     {
-        int rc = map[row][col];
-        int r = rc / numTilesAcross;
-        int c = rc % numTilesAcross;
-        return tiles[r][c].getType();
+        try {
+            int rc = map[row][col];
+            int r = rc / numTilesAcross;
+            int c = rc % numTilesAcross;
+            return tiles[r][c].getType();
+        }catch(Exception e){
+            //this happens when you fall off a cliff/reach end of game
+            System.out.println("you died/won idk");
+            System.exit(-1);
+            return -10;
+            //screen saying that you died
+            //go back to menu & reset game
+        }
     }
     public void setTween(double d) { tween = d; }
 

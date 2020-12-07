@@ -58,7 +58,6 @@ public class Player extends MapObject {
         maxSpeed = 1.6;
         stopSpeed = 0.4;
 
-        //?????
         fallSpeed = 0.15;
         maxFallSpeed = 4.0;
         jumpStart = -4.8;
@@ -162,6 +161,10 @@ public class Player extends MapObject {
         if(health == 0) dead = true;
         flinching = true;
         flinchTimer = System.nanoTime();
+
+    }
+    public boolean getDead(){
+        return dead;
     }
 
     private void getNextPosition() {

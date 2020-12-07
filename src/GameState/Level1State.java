@@ -22,7 +22,6 @@ public class Level1State extends GameState {
     public Level1State(GameStateManager gsm){
         this.gsm = gsm;
         init();
-
     }
     
     public void init() {
@@ -37,13 +36,8 @@ public class Level1State extends GameState {
         player.setPosition(100,100);
 
         populateEnemies();
-
-
         explosions = new ArrayList<Explosion>();
-
         hud = new HUD(player);
-
-
     }
     private void populateEnemies(){
         //create enemy
@@ -72,6 +66,14 @@ public class Level1State extends GameState {
         // attack enemies
         player.checkAttack(enemies);
 
+        if(player.getDead()){
+            //player dies
+            System.out.println("you died");
+            System.exit(0);
+            //say that player died
+            // go back to menu screen
+        }
+
         //update all enemies
         for(int i = 0; i < enemies.size(); i++){
             Enemy e = enemies.get(i);
@@ -94,7 +96,9 @@ public class Level1State extends GameState {
                 i--;
             }
         }
+
     }
+
     public void draw(Graphics2D g) {
         //draw bg
         bg.draw(g);
