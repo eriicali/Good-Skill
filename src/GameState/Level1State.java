@@ -59,13 +59,11 @@ public class Level1State extends GameState {
 
     }
     public void update() {
-        player.update();
-        tileMap.setPosition(GamePanel.WIDTH/2-player.getX(), GamePanel.HEIGHT/2-player.getY());
-        //set background
-        bg.setPosition(tileMap.getX(), tileMap.getY());
-        // attack enemies
-        player.checkAttack(enemies);
-
+        if(player.getX() > tileMap.getTileSize()*tileMap.getNumCols() -15 || player.getY() > tileMap.getTileSize()*tileMap.getNumRows() -15) {
+      
+            gsm.setState(GameStateManager.MENUSTATE);
+            player.setPosition(100,100);
+        }
         if(player.getDead()){
             //player dies
             System.out.println("You were killed by the enemies!");
@@ -75,11 +73,15 @@ public class Level1State extends GameState {
             //say that player died
             // go back to menu screen
         }
+        player.update();
+        tileMap.setPosition(GamePanel.WIDTH/2-player.getX(), GamePanel.HEIGHT/2-player.getY());
+        //set background
+        bg.setPosition(tileMap.getX(), tileMap.getY());
+        // attack enemies
+        player.checkAttack(enemies);
 
-        if(player.getX() > tileMap.getTileSize()*tileMap.getNumCols() -15 || player.getY() > tileMap.getTileSize()*tileMap.getNumRows() -15) {
-            gsm.setState(GameStateManager.MENUSTATE);
-            player.setPosition(100,100);
-        }
+
+
         
         
         //update all enemies

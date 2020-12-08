@@ -240,6 +240,8 @@ public class Player extends MapObject {
         for (int i = 0; i < fireballs.size(); i++){
             // do condition right here to remove fire ball if out of bounds?
             System.out.print("x:"+fireballs.get(i).getX()+"\n");
+
+            System.out.print(i);
             if(fireballs.get(i).getX() > 2449) {
                 fireballs.remove(i);
                 i--;
