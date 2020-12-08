@@ -68,12 +68,14 @@ public class Level1State extends GameState {
 
         if(player.getDead()){
             //player dies
-            System.out.println("you died");
-            System.exit(0);
+            System.out.println("You were killed by the enemies!");
+            gsm.setState(GameStateManager.MENUSTATE);
+            // System.exit(0);
             //say that player died
             // go back to menu screen
         }
-
+        
+        
         //update all enemies
         for(int i = 0; i < enemies.size(); i++){
             Enemy e = enemies.get(i);

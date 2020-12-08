@@ -86,7 +86,7 @@ public abstract class MapObject {
     public Rectangle getRectangle(){
         return new Rectangle((int) x-cwidth, (int)y-cheight, cwidth, cheight);
     }
-
+    
     public void calculateCorners(double x, double y){
         int leftTile = (int)(x-cwidth/2)/tileSize;
         int rightTile = (int)(x+cwidth/2-1)/tileSize;
@@ -94,11 +94,11 @@ public abstract class MapObject {
         int bottomTile = (int)(y+cheight/2-1)/tileSize;
 
         //get tile types (normal/blocked)
+        
         int tl = tileMap.getType(topTile, leftTile);
         int tr = tileMap.getType(topTile, rightTile);
         int bl = tileMap.getType(bottomTile, leftTile);
         int br = tileMap.getType(bottomTile, rightTile);
-
         //prevent player from going thru blocked tile
         topLeft = tl==Tile.BLOCKED;
         topRight = tr==Tile.BLOCKED;
