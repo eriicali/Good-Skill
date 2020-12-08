@@ -1,4 +1,5 @@
 package TileMap;
+import GameState.GameStateManager;
 import Main.GamePanel;
 
 import java.awt.*;
@@ -83,7 +84,7 @@ public class TileMap
             xmin = GamePanel.WIDTH - width;
             xmax = 0;
             ymin = GamePanel.HEIGHT - height;
-            ymax=0;
+            ymax = 0;
             // this is a regex delimiter for whitespace
             String delims = "\\s+";
             for (int row = 0; row < numRows; row++)
@@ -129,23 +130,45 @@ public class TileMap
     
     public int getType(int row, int col)
     {
-        try {
+        if (col >= numCols)
+        {
+            System.out.println("You won!");
+            System.exit(-1);
+            return -10;
+        } else if (row >= numRows)
+        {
+            System.out.println("You fell off a cliff!");
+    
+            System.exit(-1);
+            return -10;
+    
+        }
+        int rc = map[row][col];
+        int r = rc / numTilesAcross;
+        int c = rc % numTilesAcross;
+        return tiles[r][c].getType();
+        /* try {
             int rc = map[row][col];
             int r = rc / numTilesAcross;
             int c = rc % numTilesAcross;
             return tiles[r][c].getType();
         }catch(Exception e){
-            //this happens when you fall off a cliff/reach end of game
-            System.out.println("you died/won idk");
+            //this happens when you fall off a cliff
+            System.out.println("You fell off a cliff!");
             System.exit(-1);
             return -10;
             //screen saying that you died
             //go back to menu & reset game
-        }
+        }*/
     }
-    public void setTween(double d) { tween = d; }
-
-    public void setPosition(double x, double y){
+    
+    public void setTween(double d)
+    {
+        tween = d;
+    }
+    
+    public void setPosition(double x, double y)
+    {
         this.x += (x - this.x) * tween;
         this.y += (y - this.y) * tween;
         fixBounds();
@@ -154,24 +177,35 @@ public class TileMap
         
     }
     
-    private void fixBounds() {
-        if(x < xmin) x = xmin;
-        if(y < ymin) y = ymin;
-        if(x > xmax) x = xmax;
-        if(y > ymax) y = ymax;
+    private void fixBounds()
+    {
+        if (x < xmin) x = xmin;
+        if (y < ymin) y = ymin;
+        if (x > xmax) x = xmax;
+        if (y > ymax) y = ymax;
     }
-    public void draw(Graphics2D g){
-        for(int row = rowOffset; row < rowOffset + numRowsToDraw; row++){
-            if(row >= numRows) break;
-            for(int col = colOffset; col < colOffset + numColsToDraw; col++){
-                if(col >= numCols) break;
-                if(map[row][col] == 0) continue;
+    
+    public void draw(Graphics2D g)
+    {
+        for (int row = rowOffset; row < rowOffset + numRowsToDraw; row++)
+        {
+            if (row >= numRows) break;
+            for (int col = colOffset; col < colOffset + numColsToDraw; col++)
+            {
+                if (col >= numCols) break;
+                if (map[row][col] == 0) continue;
                 int rc = map[row][col];
                 int r = rc / numTilesAcross;
                 int c = rc % numTilesAcross;
-                g.drawImage(tiles[r][c].getImage(), (int)x + col * tileSize, (int) y + row * tileSize, null);
+                g.drawImage(tiles[r][c].getImage(), (int) x + col * tileSize, (int) y + row * tileSize, null);
             }
         }
     }
+    
+    public int getNumRows() {
+        return numRows;
+    }
+    public int getNumCols() {
+        return numCols;
+    }
 }
-

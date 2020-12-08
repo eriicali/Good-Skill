@@ -9,6 +9,8 @@ public class GameStateManager {
     public static final int MENUSTATE = 0;
     //do we really need this?
     public static final int LEVEL1STATE = 1;
+    public static final int GAMEOVERSTATE = -1;
+    
     public GameStateManager() {
         gameStates = new ArrayList<GameState>();
         currentState = MENUSTATE;
@@ -19,6 +21,9 @@ public class GameStateManager {
     public void setState(int state) {
         currentState = state;
         gameStates.get(currentState).init();
+    }
+    public int getState(){
+        return currentState;
     }
     public void update() {
         gameStates.get(currentState).update();
@@ -32,5 +37,6 @@ public class GameStateManager {
     public void keyReleased(int key) {
         gameStates.get(currentState).keyReleased(key);
     }
+    // public boolean gameOver(){}
 
 }
