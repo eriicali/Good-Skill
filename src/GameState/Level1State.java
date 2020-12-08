@@ -60,7 +60,6 @@ public class Level1State extends GameState {
     }
     public void update() {
         if(player.getX() > tileMap.getTileSize()*tileMap.getNumCols() -15 || player.getY() > tileMap.getTileSize()*tileMap.getNumRows() -15) {
-      
             gsm.setState(GameStateManager.MENUSTATE);
             player.setPosition(100,100);
         }
