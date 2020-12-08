@@ -31,7 +31,7 @@ public class Level1State extends GameState {
         tileMap.setPosition(0, 0);
         tileMap.setTween(1);//camera speed following player
 
-        bg = new Background("/Backgrounds/grassbg1.gif", 0.1);
+        bg = new Background("/Backgrounds/night.gif", 0.1);
         player = new Player(tileMap);
         player.setPosition(100,100);
 
