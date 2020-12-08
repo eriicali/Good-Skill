@@ -215,6 +215,7 @@ public class Player extends MapObject {
     }
     public void update() {
         //update position
+
         getNextPosition();
         checkTileMapCollision();
         setPosition(xtemp, ytemp);
@@ -237,6 +238,12 @@ public class Player extends MapObject {
             }
         }
         for (int i = 0; i < fireballs.size(); i++){
+            // do condition right here to remove fire ball if out of bounds?
+            System.out.print("x:"+fireballs.get(i).getX()+"\n");
+            if(fireballs.get(i).getX() > 2449) {
+                fireballs.remove(i);
+                i--;
+            }
             fireballs.get(i).update();
             if(fireballs.get(i).shouldRemove()){
                 fireballs.remove(i);

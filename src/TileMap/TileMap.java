@@ -130,6 +130,7 @@ public class TileMap
     
     public int getType(int row, int col)
     {
+        /*
         if (col >= numCols)
         {
             System.out.println("You won!");
@@ -142,7 +143,7 @@ public class TileMap
             System.exit(-1);
             return -10;
     
-        }
+        }*/
         int rc = map[row][col];
         int r = rc / numTilesAcross;
         int c = rc % numTilesAcross;
@@ -159,6 +160,7 @@ public class TileMap
             return -10;
             //screen saying that you died
             //go back to menu & reset game
+            //go back to menu & reset gamerilesize
         }*/
     }
     

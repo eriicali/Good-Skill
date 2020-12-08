@@ -69,10 +69,16 @@ public class Level1State extends GameState {
         if(player.getDead()){
             //player dies
             System.out.println("You were killed by the enemies!");
+            //idk why it says killed by enemies twice
             gsm.setState(GameStateManager.MENUSTATE);
             // System.exit(0);
             //say that player died
             // go back to menu screen
+        }
+
+        if(player.getX() > tileMap.getTileSize()*tileMap.getNumCols() -15 || player.getY() > tileMap.getTileSize()*tileMap.getNumRows() -15) {
+            gsm.setState(GameStateManager.MENUSTATE);
+            player.setPosition(100,100);
         }
         
         

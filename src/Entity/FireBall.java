@@ -52,6 +52,7 @@ public class FireBall extends MapObject {
     public boolean shouldRemove() {return remove;}
     
     public void update() {
+
         checkTileMapCollision();
         setPosition(xtemp, ytemp);
         if(dx == 0 && !hit){
@@ -62,7 +63,10 @@ public class FireBall extends MapObject {
         //not working bc GamePanel.Height and GamePanel.Width (320, 240) are constant ints
         //fireball animation doesnt work once we move past GamePanel.Width number of pixels
         //need to change notOnScreen method to account for this?
-        if(hit && animation.hasPlayedOnce()|| this.notOnScreen()){
+        //|| this.notOnScreen()
+
+        // or if the end of the screen has been reached
+        if(hit && animation.hasPlayedOnce()){
             remove = true;
         }
     }
