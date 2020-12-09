@@ -126,7 +126,11 @@ public abstract class MapObject {
             if (topLeft || topRight) {
                 dy = 0;
                 //set player right below tile that player bumped into
-                ytemp = currRow * tileSize + cheight / 2;
+                // we used currRow+1 so that we don't get the player stuck in the dirt
+                ytemp = (currRow+1) * tileSize + cheight / 2;
+                
+                
+                
             }else{
                 ytemp+=dy;
             }
