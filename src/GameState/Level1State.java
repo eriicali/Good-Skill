@@ -59,52 +59,59 @@ public class Level1State extends GameState {
 
     }
     public void update() {
-        if(player.getX() > tileMap.getTileSize()*tileMap.getNumCols() -15 || player.getY() > tileMap.getTileSize()*tileMap.getNumRows() -15) {
-            gsm.setState(GameStateManager.MENUSTATE);
+        if(player.getX() > tileMap.getTileSize()*tileMap.getNumCols() -15 ) {
+            player.setPosition(100,100);
+            System.out.println("dfsdsf");
+            gsm.setState(GameStateManager.PASSSTATE);
             player.setPosition(100,100);
         }
-        if(player.getDead()){
+        else if(player.getDead() || player.getY() > tileMap.getTileSize()*tileMap.getNumRows() -15){
             //player dies
             System.out.println("You were killed by the enemies!");
             //idk why it says killed by enemies twice
-            gsm.setState(GameStateManager.MENUSTATE);
+            gsm.setState(GameStateManager.FAILURESTATE);
             // System.exit(0);
             //say that player died
             // go back to menu screen
         }
-        player.update();
-        tileMap.setPosition(GamePanel.WIDTH/2-player.getX(), GamePanel.HEIGHT/2-player.getY());
-        //set background
-        bg.setPosition(tileMap.getX(), tileMap.getY());
-        // attack enemies
-        player.checkAttack(enemies);
+        else {
+
+            player.update();
+            tileMap.setPosition(GamePanel.WIDTH/2-player.getX(), GamePanel.HEIGHT/2-player.getY());
+            //set background
+            bg.setPosition(tileMap.getX(), tileMap.getY());
+            // attack enemies
+            player.checkAttack(enemies);
 
 
 
-        
-        
-        //update all enemies
-        for(int i = 0; i < enemies.size(); i++){
-            Enemy e = enemies.get(i);
-            e.update();
-            if(e.isDead()) {
-                enemies.remove(i);
-                i--;
-                explosions.add(
-                        //idk why he didnt cast
-                        new Explosion((int) e.getX(), (int) e.getY())
-                );
+
+
+            //update all enemies
+            for(int i = 0; i < enemies.size(); i++){
+                Enemy e = enemies.get(i);
+                e.update();
+                if(e.isDead()) {
+                    enemies.remove(i);
+                    i--;
+                    explosions.add(
+                            //idk why he didnt cast
+                            new Explosion((int) e.getX(), (int) e.getY())
+                    );
+                }
             }
-        }
-        //update explosions
-        for(int i =0; i< explosions.size(); i++){
-            Explosion e = explosions.get(i);
-            e.update();
-            if(e.shouldRemove()) {
-                explosions.remove(i);
-                i--;
+            //update explosions
+            for(int i =0; i< explosions.size(); i++){
+                Explosion e = explosions.get(i);
+                e.update();
+                if(e.shouldRemove()) {
+                    explosions.remove(i);
+                    i--;
+                }
             }
+
         }
+
 
     }
 
