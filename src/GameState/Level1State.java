@@ -61,19 +61,25 @@ public class Level1State extends GameState {
     public void update() {
         if(player.getX() > tileMap.getTileSize()*tileMap.getNumCols() -15 ) {
             player.setPosition(100,100);
-            System.out.println("dfsdsf");
+            System.out.println("you passed!");
             gsm.setState(GameStateManager.PASSSTATE);
             player.setPosition(100,100);
         }
-        else if(player.getDead() || player.getY() > tileMap.getTileSize()*tileMap.getNumRows() -15){
+        else if(player.getDead()){
             //player dies
-            System.out.println("You were killed by the enemies!");
+            System.out.println("You were killed by the sheer amount of assingments, looks like you took on too much :(!");
             player.setDead(false);
             //idk why it says killed by enemies twice
             gsm.setState(GameStateManager.FAILURESTATE);
             // System.exit(0);
             //say that player died
             // go back to menu screen
+        }
+        else if (player.getY() > tileMap.getTileSize()*tileMap.getNumRows() -15){
+            System.out.println("You fell into a hole of procrastination!");
+            player.setDead(false);
+            //idk why it says killed by enemies twice
+            gsm.setState(GameStateManager.PROCRASTINATIONSTATE);
         }
         else {
 

@@ -4,7 +4,7 @@ import TileMap.Background;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class FailureState extends GameState {
+public class ProcrastinationState extends GameState {
     private Background bg;
     private int currentChoice = 0;
     private String[] options = {
@@ -14,10 +14,10 @@ public class FailureState extends GameState {
     private Color titleColor;
     private Font titleFont;
     private Font font;
-    public FailureState(GameStateManager gsm) {
+    public ProcrastinationState(GameStateManager gsm) {
         this.gsm = gsm;
         try {
-            bg= new Background("/Backgrounds/deathbyassignments.gif",1);
+            bg= new Background("/Backgrounds/procrastination.gif",1);
 
             titleColor = new Color(255,255,255);
             titleFont = new Font("Century Gothic", Font.PLAIN, 15);
@@ -40,7 +40,8 @@ public class FailureState extends GameState {
         g.setColor(titleColor);
         g.setFont(titleFont);
         // make function later to find center upper corner
-        g.drawString("You got crushed by assignments :(", 18, 30);
+        g.drawString("You fell into a hole of procrastination :(", 18, 30);
+
         g.setFont(font);
         for (int i =0; i< options.length;i++){
             if (i == currentChoice) {
@@ -59,7 +60,7 @@ public class FailureState extends GameState {
         if (currentChoice == 1) {
             System.exit(0);
         }
-
+     
 
     }
     public void keyPressed(int key) {

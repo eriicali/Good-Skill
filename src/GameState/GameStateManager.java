@@ -11,7 +11,7 @@ public class GameStateManager {
     public static final int LEVEL1STATE = 1;
     public static final int FAILURESTATE = 2;
     public static final int PASSSTATE =3;
-
+    public static final int PROCRASTINATIONSTATE =4;
 
     public GameStateManager() {
         gameStates = new ArrayList<GameState>();
@@ -20,6 +20,7 @@ public class GameStateManager {
         gameStates.add(new Level1State(this));
         gameStates.add(new FailureState(this));
         gameStates.add(new PassState(this));
+        gameStates.add(new ProcrastinationState(this));
     }
 
     public void setState(int state) {

@@ -41,7 +41,7 @@ public class PassState extends GameState {
         g.setColor(titleColor);
         g.setFont(titleFont);
         // make function later to find center upper corner
-        g.drawString("Good Skill", 80, 70);
+        g.drawString("Culearn", 80, 70);
         g.setFont(font);
         for (int i =0; i< options.length;i++){
             if (i == currentChoice) {
