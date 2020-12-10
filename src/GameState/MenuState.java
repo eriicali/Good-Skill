@@ -14,13 +14,14 @@ public class MenuState extends GameState {
     };
     private Color titleColor;
     private Font titleFont;
+    private Color selectionColor;
     private Font font;
     public MenuState(GameStateManager gsm) {
         this.gsm = gsm;
         try {
             bg= new Background("/Backgrounds/menubg.gif",1);
-            bg.setVector(-0.1,0);
-            titleColor = new Color(0,0,0);
+            selectionColor = new Color(156, 62, 40);
+            titleColor = new Color(207, 227, 236);
             titleFont = new Font("Century Gothic", Font.PLAIN, 28);
             font  = new Font("Arial",Font.PLAIN, 12);
         }
@@ -41,16 +42,19 @@ public class MenuState extends GameState {
        g.setColor(titleColor);
        g.setFont(titleFont);
        // make function later to find center upper corner
-       g.drawString("Good Skill", 80, 70);
+       g.drawString("Good Skill", 90, 45);
+
        g.setFont(font);
+
        for (int i =0; i< options.length;i++){
            if (i == currentChoice) {
-               g.setColor(Color.RED);
+               g.setColor(selectionColor);
+               g.drawString("<-",75, 120+i*15);
            }
            else {
-               g.setColor(Color.BLACK);
+               g.setColor(titleColor);
            }
-           g.drawString(options[i], 145, 140+i*15);
+           g.drawString(options[i], 46, 120+i*15);
        }
     }
     public void select() {
