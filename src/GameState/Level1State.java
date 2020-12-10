@@ -4,7 +4,7 @@ import Main.GamePanel;
 import TileMap.Background;
 import TileMap.TileMap;
 import java.awt.*;
-
+import java.util.Random;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import Entity.Enemies.*;
@@ -44,10 +44,12 @@ public class Level1State extends GameState
         hud = new HUD(player);
     }
     private void populateEnemies(){
+        int n;
+        Random rand = new Random();
         //create enemy
         enemies = new ArrayList<Enemy>();
-
-        Assignment assignment;
+        // polymorphism
+        Enemy assignment;
         //set enemy positions on the screen for each enemy in ArrayList
         Point[] points = new Point[] {
             new Point(200,100),
@@ -58,7 +60,21 @@ public class Level1State extends GameState
         };
         //loop through enemy ArrayList and add them to the screen
         for(int i= 0; i< points.length; i++) {
-            assignment = new Assignment(tileMap);
+            n = rand.nextInt(3) + 1;
+            switch(n) {
+                case 1:
+                    assignment = new CompAssignment(tileMap);
+                    break;
+                case 2:
+                    assignment = new WritingAssignment(tileMap);
+                    break;
+                default:
+                    assignment = new Assignment(tileMap);
+                    break;
+                    
+            }
+            
+            // assignment = new Assignment(tileMap);
             assignment.setPosition(points[i].x,points[i].y);
             enemies.add(assignment);
         }
@@ -77,7 +93,7 @@ public class Level1State extends GameState
         }
         else if(player.getDead()){
             //player dies because 0 health (too many enemies)
-            System.out.println("You were killed by the sheer amount of assingments, looks like you took on too much :(!");
+            System.out.println("You were killed by the sheer amount of assignments, looks like you took on too much :(!");
             //reset to default value
             player.setDead(false);
             //idk why it says killed by enemies twice

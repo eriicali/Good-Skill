@@ -29,7 +29,7 @@ public class WritingAssignment extends Enemy{
         try{
             //read sprites from file
             BufferedImage spritesheet = ImageIO.read(
-                    getClass().getResourceAsStream("/Sprites/Enemies/homework.gif")
+                    getClass().getResourceAsStream("/Sprites/Enemies/writingassignment.gif")
             );
 
             sprites = new BufferedImage[3];
