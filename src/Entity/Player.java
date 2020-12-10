@@ -51,8 +51,8 @@ public class Player extends MapObject {
         width = 30;
         height = 30;
         //character width character height
-        cwidth = 20;
-        cheight = 20;
+        characterWidth = 20;
+        characterHeight = 20;
         //try not to mess with these too much
         moveSpeed = 0.3;
         maxSpeed = 1.6;

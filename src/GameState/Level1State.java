@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import Entity.Enemies.*;
 
-public class Level1State extends LevelState
+public class Level1State extends GameState
 {
     private TileMap tileMap;
     private Background bg;

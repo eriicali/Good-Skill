@@ -21,8 +21,8 @@ public class FireBall extends MapObject {
         else dx = -moveSpeed;
         width = 30;
         height = 30;
-        cwidth = 14;
-        cheight = 14;
+        characterWidth = 14;
+        characterHeight = 14;
         // load sprites
         try{
             BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Sprites/Player/fireball.gif"));

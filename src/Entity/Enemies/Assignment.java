@@ -18,8 +18,8 @@ public class Assignment extends Enemy{
 
         width = 30;
         height = 30;
-        cwidth = 20;
-        cheight =20;
+        characterWidth = 20;
+        characterHeight = 20;
         health = maxHealth =2;
         damage = 1;
 

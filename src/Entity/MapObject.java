@@ -25,8 +25,8 @@ public abstract class MapObject {
     protected int height;
 
     //collision box ->collision with enemies, etc.
-    protected int cwidth;
-    protected int cheight;
+    protected int characterWidth;
+    protected int characterHeight;
 
     //collision other
     //vars
@@ -84,14 +84,14 @@ public abstract class MapObject {
     }
 
     public Rectangle getRectangle(){
-        return new Rectangle((int) x-cwidth, (int)y-cheight, cwidth, cheight);
+        return new Rectangle((int) x-characterWidth, (int)y-characterHeight, characterWidth, characterHeight);
     }
     
     public void calculateCorners(double x, double y){
-        int leftTile = (int)(x-cwidth/2)/tileSize;
-        int rightTile = (int)(x+cwidth/2-1)/tileSize;
-        int topTile = (int)(y+cheight/2-1)/tileSize;
-        int bottomTile = (int)(y+cheight/2-1)/tileSize;
+        int leftTile = (int)(x-characterWidth/2)/tileSize;
+        int rightTile = (int)(x+characterWidth/2-1)/tileSize;
+        int topTile = (int)(y+characterHeight/2-1)/tileSize;
+        int bottomTile = (int)(y+characterHeight/2-1)/tileSize;
 
         //get tile types (normal/blocked)
         
@@ -127,7 +127,7 @@ public abstract class MapObject {
                 dy = 0;
                 //set player right below tile that player bumped into
                 // we used currRow+1 so that we don't get the player stuck in the dirt
-                ytemp = (currRow+1) * tileSize + cheight / 2;
+                ytemp = (currRow+1) * tileSize + characterHeight / 2;
                 
                 
                 
@@ -140,7 +140,7 @@ public abstract class MapObject {
             if(bottomLeft||bottomRight){
                 dy=0;
                 falling=false;//not falling anymore
-                ytemp = (currRow + 1) * tileSize - cheight/2;
+                ytemp = (currRow + 1) * tileSize - characterHeight/2;
             }else{
                 ytemp+=dy;
             }
@@ -152,7 +152,7 @@ public abstract class MapObject {
             //going left
             if(topLeft || bottomLeft){
                 dx=0;
-                xtemp = currCol * tileSize + cwidth/2;
+                xtemp = currCol * tileSize + characterWidth/2;
             }else{
                 xtemp+=dx;
             }
@@ -161,7 +161,7 @@ public abstract class MapObject {
             //going right
             if(topRight || bottomRight){
                 dx = 0;
-                xtemp = (currCol + 1) * tileSize - cwidth/2;
+                xtemp = (currCol + 1) * tileSize - characterWidth/2;
             }else{
                 xtemp += dx;
             }
@@ -194,11 +194,11 @@ public abstract class MapObject {
     }
 
     public int getCwidth() {
-        return cwidth;
+        return characterWidth;
     }
 
     public int getCheight() {
-        return cheight;
+        return characterHeight;
     }
 
     public void setPosition(double x, double y) {
@@ -212,7 +212,7 @@ public abstract class MapObject {
     }
 
     public void setMapPosition(){
-        //every map object has 2 positon (local and global)
+        //every map object has 2 position (local and global)
         //where to draw character
         //offset player back on screen if they exit it
         xmap = tileMap.getX();
