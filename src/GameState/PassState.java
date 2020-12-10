@@ -4,7 +4,8 @@ import TileMap.Background;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class PassState extends GameState {
+public class PassState extends GameState
+{
     private Background bg;
     private int currentChoice = 0;
     private String[] options = {
