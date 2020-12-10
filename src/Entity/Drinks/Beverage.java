@@ -1,4 +1,4 @@
-package Drinks;
+package Entity.Drinks;
 public abstract class Beverage {
     protected int healthChange;
     protected int energyChange;
