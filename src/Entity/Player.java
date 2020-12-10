@@ -130,11 +130,12 @@ public class Player extends MapObject {
                 }
                 else {
                     if (e.getX() < x &&
-                        e.getX() > x + pencilRange &&
+                        e.getX() > x - pencilRange &&
                         e.getY() > y - height/2 &&
                         e.getY() < y + height/2
                     ) {
                         e.hit(pencilDamage);
+                        
                     }
 
                 }
