@@ -21,7 +21,7 @@ public class PassState extends GameState
         try {
             bg= new Background("/Backgrounds/grades.gif",1);
 
-            titleColor = new Color(0,0,0);
+            titleColor = new Color(207, 227, 236);
             titleFont = new Font("Century Gothic", Font.PLAIN, 28);
             font  = new Font("Arial",Font.PLAIN, 12);
         }
@@ -42,7 +42,9 @@ public class PassState extends GameState
         g.setColor(titleColor);
         g.setFont(titleFont);
         // make function later to find center upper corner
-        g.drawString("Culearn", 80, 70);
+        g.drawString("You Passed!", 80, 70);
+        g.drawString("Assignments done /5", 80, 70);
+        g.drawString("Final Grade", 80, 70);
         g.setFont(font);
         for (int i =0; i< options.length;i++){
             if (i == currentChoice) {

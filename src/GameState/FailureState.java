@@ -41,11 +41,13 @@ public class FailureState extends GameState
         g.setColor(titleColor);
         g.setFont(titleFont);
         // make function later to find center upper corner
-        g.drawString("You got crushed by assignments :(", 18, 30);
+        g.drawString("You got crushed by", 18, 30);
+        g.drawString("assignments :(", 18, 50);
         g.setFont(font);
         for (int i =0; i< options.length;i++){
             if (i == currentChoice) {
                 g.setColor(Color.RED);
+                g.drawString("<-",280, 140+i*15);
             }
             else {
                 g.setColor(Color.WHITE);
