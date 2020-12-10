@@ -1,5 +1,6 @@
 package GameState;
 import Entity.*;
+import Entity.Drinks.Coffee;
 import Main.GamePanel;
 import TileMap.Background;
 import TileMap.TileMap;
@@ -16,6 +17,7 @@ public class Level1State extends GameState
     private Background bg;
     private Player player;
     private ArrayList<Enemy> enemies;
+    private ArrayList<Beverage> drinks;
     private ArrayList<Explosion> explosions;
     private HUD hud;
     
@@ -40,6 +42,7 @@ public class Level1State extends GameState
 
         //instantiating MapObjects
         populateEnemies();
+        populateDrinks();
         explosions = new ArrayList<Explosion>();
         hud = new HUD(player);
     }
@@ -77,6 +80,28 @@ public class Level1State extends GameState
             // assignment = new Assignment(tileMap);
             assignment.setPosition(points[i].x,points[i].y);
             enemies.add(assignment);
+        }
+
+    }
+    private void populateDrinks(){
+
+        //create enemy
+        drinks = new ArrayList<Beverage>();
+        // polymorphism
+        Beverage beverage;
+        //set enemy positions on the screen for each enemy in ArrayList
+        Point[] points = new Point[] {
+                new Point(200,100),
+                new Point(860,200),
+                new Point(1525, 200),
+
+        };
+        //loop through enemy ArrayList and add them to the screen
+        for(int i= 0; i< points.length; i++) {
+            beverage = new Coffee(tileMap);
+
+            beverage.setPosition(points[i].x,points[i].y);
+            drinks.add(beverage);
         }
 
     }
@@ -130,6 +155,11 @@ public class Level1State extends GameState
                     );
                 }
             }
+            for(int i = 0; i < drinks.size(); i++){
+                Beverage b = drinks.get(i);
+                b.update();
+
+            }
             //update explosions
             for(int i =0; i< explosions.size(); i++){
                 Explosion e = explosions.get(i);
@@ -165,7 +195,9 @@ public class Level1State extends GameState
             explosions.get(i).setMapPosition((int)tileMap.getX(),(int)tileMap.getY());
             explosions.get(i).draw(g);
         }
-
+        for(int i=0; i<drinks.size(); i++){
+            drinks.get(i).draw(g);
+        }
         //draw hud
         hud.draw(g);
 
