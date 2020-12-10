@@ -1,6 +1,5 @@
 package GameState;
 import Entity.*;
-import Main.Game;
 import Main.GamePanel;
 import TileMap.Background;
 import TileMap.TileMap;
@@ -10,10 +9,10 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import Entity.Enemies.*;
 
-public class Level1State extends GameState {
+public class Level1State extends LevelState
+{
     private TileMap tileMap;
     private Background bg;
-
     private Player player;
     private ArrayList<Enemy> enemies;
     private ArrayList<Explosion> explosions;
@@ -43,7 +42,7 @@ public class Level1State extends GameState {
         //create enemy
         enemies = new ArrayList<Enemy>();
 
-        Slugger s;
+        Assignment assignment;
         Point[] points = new Point[] {
             new Point(200,100),
             new Point(860,200),
@@ -52,9 +51,9 @@ public class Level1State extends GameState {
             new Point(1800, 200)
         };
         for(int i= 0; i< points.length; i++) {
-            s = new Slugger(tileMap);
-            s.setPosition(points[i].x,points[i].y);
-            enemies.add(s);
+            assignment = new Assignment(tileMap);
+            assignment.setPosition(points[i].x,points[i].y);
+            enemies.add(assignment);
         }
 
     }

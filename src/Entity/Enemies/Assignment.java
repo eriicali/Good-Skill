@@ -6,9 +6,9 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Slugger extends Enemy{
+public class Assignment extends Enemy{
     private  BufferedImage[] sprites;
-    public Slugger(TileMap tm) {
+    public Assignment(TileMap tm) {
         super(tm);
         //enemy stats
         moveSpeed = 0.3;
