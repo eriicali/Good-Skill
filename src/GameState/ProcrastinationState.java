@@ -55,12 +55,18 @@ public class ProcrastinationState extends GameState {
     }
     public void select() {
         if (currentChoice == 0) {
-            gsm.setState(GameStateManager.LEVEL1STATE);
+            try{
+                Thread.currentThread().sleep(500);
+                gsm.setState(GameStateManager.LEVEL1STATE);
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
         if (currentChoice == 1) {
             System.exit(0);
         }
-     
+
 
     }
     public void keyPressed(int key) {

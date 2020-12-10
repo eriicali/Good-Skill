@@ -26,7 +26,7 @@ public class Slugger extends Enemy{
         //load sprites
         try{
             BufferedImage spritesheet = ImageIO.read(
-                getClass().getResourceAsStream("/Sprites/Enemies/slugger.gif")
+                getClass().getResourceAsStream("/Sprites/Enemies/homework.gif")
             );
 
             sprites = new BufferedImage[3];
