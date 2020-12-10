@@ -27,7 +27,7 @@ public class Coffee extends Beverage {
         try{
             //read sprites from file
             BufferedImage spritesheet = ImageIO.read(
-                    getClass().getResourceAsStream("/Sprites/Enemies/coffee.gif")
+                    getClass().getResourceAsStream("/Sprites/Drinks/coffee.gif")
             );
 
             sprites = new BufferedImage[3];
