@@ -7,27 +7,27 @@ import java.awt.image.BufferedImage;
 
 public class Player extends MapObject {
     // player stuff
-    //instead of fire do ink
+    //instead of ink do ink
     private int health;
     private int maxHealth;
-    private int fire;
-    private int maxFire;
+    private int ink;
+    private int maxInk;
     private boolean dead;
     private boolean flinching;
     private long flinchTimer;
 
     //fireball or ink ball
-    private boolean firing;
-    private int fireCost;
-    private int fireBallDamage;
-    private ArrayList<FireBall> fireballs;
+    private boolean throwingInk;
+    private int inkCost;
+    private int inkBlobDamage;
+    private ArrayList<FireBall> inkBlobs;
     //maybe we can do some polymorphism here later and have more than one attack
     //private ArrayList<FireBall> fireBalls;
 
     //scratch
-    private boolean scratching;
-    private int scratchDamage;
-    private int scratchRange;
+    private boolean pencilAttack;
+    private int pencilDamage;
+    private int pencilRange;
 
     //glising
     private boolean gliding;
@@ -43,8 +43,8 @@ public class Player extends MapObject {
     private static final int JUMPING = 2;
     private static final int FALLING = 3;
     private static final int GLIDING = 4;
-    private static final int FIREBALL = 5;
-    private static final int SCRATCHING = 6;
+    private static final int INKBLOB = 5;
+    private static final int PENCILATTACK = 6;
 
     public Player(TileMap tm) {
         super(tm);
@@ -65,12 +65,12 @@ public class Player extends MapObject {
 
         facingRight = true;
         health = maxHealth = 5;
-        fire = maxFire = 2500;
-        fireCost = 200;
-        fireBallDamage = 5;
-        fireballs = new ArrayList<FireBall>();
-        scratchDamage = 8;
-        scratchRange =40;
+        ink = maxInk = 2500;
+        inkCost = 200;
+        inkBlobDamage = 5;
+        inkBlobs = new ArrayList<FireBall>();
+        pencilDamage = 8;
+        pencilRange =40;
         try{
             BufferedImage spritesheet = ImageIO.read(
               getClass().getResourceAsStream("/Sprites/Player/playersprites.gif")
@@ -79,7 +79,7 @@ public class Player extends MapObject {
             for(int i = 0; i < 7; i++) {
                 BufferedImage[] bi = new BufferedImage[numFrames[i]];
                 for(int j = 0; j<numFrames[i]; j++){
-                    if(i != SCRATCHING){
+                    if(i != PENCILATTACK){
                         bi[j] = spritesheet.getSubimage(j * width, i * height, width, height);
                     }
                     else {
@@ -101,14 +101,14 @@ public class Player extends MapObject {
     }
     public int getHealth() {return health;}
     public int getMaxHealth() {return maxHealth;}
-    public int getFire() {return fire;}
-    public int getMaxFire() {return maxFire;}
+    public int getInk() {return ink;}
+    public int getMaxInk() {return maxInk;}
     public void setFiring() {
-        firing = true;
+        throwingInk = true;
 
     }
     public void setScratching() {
-        scratching = true;
+        pencilAttack = true;
     }
     public void setGliding(boolean b) {
         gliding = b;
@@ -118,31 +118,31 @@ public class Player extends MapObject {
         for(int i= 0; i <enemies.size(); i++) {
             Enemy e = enemies.get(i);
             //scratch attack
-            if(scratching){
+            if(pencilAttack){
                 if(facingRight){
                     if (e.getX() > x &&
-                        e.getX() < x + scratchRange &&
+                        e.getX() < x + pencilRange &&
                         e.getY() > y - height/2 &&
                         e.getY() < y + height/2
                     ) {
-                        e.hit(scratchDamage);
+                        e.hit(pencilDamage);
                     }
                 }
                 else {
                     if (e.getX() < x &&
-                        e.getX() > x + scratchRange &&
+                        e.getX() > x + pencilRange &&
                         e.getY() > y - height/2 &&
                         e.getY() < y + height/2
                     ) {
-                        e.hit(scratchDamage);
+                        e.hit(pencilDamage);
                     }
 
                 }
             }
-            for (int j = 0; j< fireballs.size(); j++) {
-                if (fireballs.get(j).intersects(e)){
-                    e.hit(fireBallDamage);
-                    fireballs.get(j).setHit();
+            for (int j = 0; j< inkBlobs.size(); j++) {
+                if (inkBlobs.get(j).intersects(e)){
+                    e.hit(inkBlobDamage);
+                    inkBlobs.get(j).setHit();
                     break;
                 }
             }
@@ -196,7 +196,7 @@ public class Player extends MapObject {
             }
         }
         // cannot move while attacking except in air
-        if((currentAction==SCRATCHING ||currentAction==FIREBALL)&& !(jumping ||falling)){
+        if((currentAction== PENCILATTACK ||currentAction== INKBLOB)&& !(jumping ||falling)){
             dx = 0;
         }
         if (jumping && !falling) {
@@ -220,31 +220,31 @@ public class Player extends MapObject {
         checkTileMapCollision();
         setPosition(xtemp, ytemp);
         // check attack has stopped
-        if(currentAction == SCRATCHING){
-            if(animation.hasPlayedOnce()) scratching = false;
+        if(currentAction == PENCILATTACK){
+            if(animation.hasPlayedOnce()) pencilAttack = false;
         }
-        if(currentAction == FIREBALL){
-            if(animation.hasPlayedOnce()) firing = false;
+        if(currentAction == INKBLOB){
+            if(animation.hasPlayedOnce()) throwingInk = false;
         }
         // fireball attack
-        fire += 1;
-        if(fire > maxFire) fire = maxFire;
-        if(firing && currentAction != FIREBALL){
-            if(fire > fireCost){
-                fire -= fireCost;
+        ink += 1;
+        if(ink > maxInk) ink = maxInk;
+        if(throwingInk && currentAction != INKBLOB){
+            if(ink > inkCost){
+                ink -= inkCost;
                 FireBall fb = new FireBall(tileMap, facingRight);
                 fb.setPosition(x, y);
-                fireballs.add(fb);
+                inkBlobs.add(fb);
             }
         }
-        for (int i = 0; i < fireballs.size(); i++){
-            // do condition right here to remove fire ball if out of bounds?
-           // System.out.print("x:"+fireballs.get(i).getX()+"\n");
+        for (int i = 0; i < inkBlobs.size(); i++){
+            // do condition right here to remove ink ball if out of bounds?
+           // System.out.print("x:"+inkBlobs.get(i).getX()+"\n");
 
 
-            fireballs.get(i).update();
-            if(fireballs.get(i).shouldRemove()){
-                fireballs.remove(i);
+            inkBlobs.get(i).update();
+            if(inkBlobs.get(i).shouldRemove()){
+                inkBlobs.remove(i);
                 i--;
             }
         }
@@ -257,18 +257,18 @@ public class Player extends MapObject {
         }
         
         // set animations
-        if(scratching) {
-            if (currentAction != SCRATCHING) {
-                currentAction = SCRATCHING;
-                animation.setFrames(sprites.get(SCRATCHING));
+        if(pencilAttack) {
+            if (currentAction != PENCILATTACK) {
+                currentAction = PENCILATTACK;
+                animation.setFrames(sprites.get(PENCILATTACK));
                 animation.setDelay(50);
                 width = 60;
             }
         }
-        else if(firing) {
-            if(currentAction != FIREBALL) {
-                currentAction = FIREBALL;
-                animation.setFrames(sprites.get(FIREBALL));
+        else if(throwingInk) {
+            if(currentAction != INKBLOB) {
+                currentAction = INKBLOB;
+                animation.setFrames(sprites.get(INKBLOB));
                 animation.setDelay(100);
                 width = 30;
             }
@@ -315,16 +315,16 @@ public class Player extends MapObject {
             }
         }
         animation.update();
-        if(currentAction != SCRATCHING && currentAction != FIREBALL){
+        if(currentAction != PENCILATTACK && currentAction != INKBLOB){
             if(right) facingRight = true;
             if(left) facingRight = false;
         }
     }
     public void draw(Graphics2D g) {
         setMapPosition();
-        //draw fireballs
-        for (int i = 0; i < fireballs.size(); i++) {
-            fireballs.get(i).draw(g);
+        //draw inkBlobs
+        for (int i = 0; i < inkBlobs.size(); i++) {
+            inkBlobs.get(i).draw(g);
         }
         if (flinching) {
             long elapsed = (System.nanoTime() - flinchTimer) / 1000000;
@@ -334,8 +334,4 @@ public class Player extends MapObject {
         }
         super.draw(g);
     }
-
-
-
-
 }

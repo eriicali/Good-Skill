@@ -24,6 +24,6 @@ public class HUD {
         g.setFont(font);
         g.setColor(Color.WHITE);
         g.drawString(player.getHealth() + "/" + player.getMaxHealth(),30, 25);
-        g.drawString(player.getFire()/100 + "/" + player.getMaxFire()/100, 30, 45);
+        g.drawString(player.getInk()/100 + "/" + player.getMaxInk()/100, 30, 45);
     }
 }
