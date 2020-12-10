@@ -128,9 +128,6 @@ public abstract class MapObject {
                 //set player right below tile that player bumped into
                 // we used currRow+1 so that we don't get the player stuck in the dirt
                 ytemp = (currRow+1) * tileSize + characterHeight / 2;
-                
-                
-                
             }else{
                 ytemp+=dy;
             }
@@ -145,7 +142,6 @@ public abstract class MapObject {
                 ytemp+=dy;
             }
         }
-
         //x direction
         calculateCorners(xdest, y);
         if(dx<0){
@@ -238,6 +234,7 @@ public abstract class MapObject {
     public void setJumping(boolean jumping) {
         this.jumping = jumping;
     }
+
     //whether or not object is on screen ->draw or not
     //screen moves with player in center
     public boolean notOnScreen(){
@@ -246,12 +243,9 @@ public abstract class MapObject {
                 y + ymap + height < 0 ||
                 y + ymap - height > GamePanel.HEIGHT;
     }
-    /*public void removeMapObject(){
-        if(this.notOnScreen()){
-            remove = true;
-        }
-    }*/
+
     public void draw (java.awt.Graphics2D g){
+        //draw mapObject animation in direction facing
         if(facingRight) {
             g.drawImage(animation.getImage(), (int)(x+xmap - width / 2), (int) (y + ymap - height/2),null);
         }
@@ -259,6 +253,4 @@ public abstract class MapObject {
             g.drawImage(animation.getImage(), (int) (x + xmap - width / 2 + width),(int) (y+ymap-height/2),-width,height,null);
         }
     }
-
-   // public abstract void update();
 }

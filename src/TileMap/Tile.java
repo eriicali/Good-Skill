@@ -8,7 +8,9 @@ public class Tile {
     private int type;
     
     // tile types
+    //player can go through
     public static final int NORMAL = 0;
+    //player can't go throught
     public static final int BLOCKED = 1;
     
     public Tile(BufferedImage image, int type){

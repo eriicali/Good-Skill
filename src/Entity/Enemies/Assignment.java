@@ -5,6 +5,8 @@ import TileMap.TileMap;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 // the assignments represent enemies
 public class Assignment extends Enemy{
     private  BufferedImage[] sprites;
@@ -25,15 +27,18 @@ public class Assignment extends Enemy{
 
         //load sprites
         try{
+            //read sprites from file
             BufferedImage spritesheet = ImageIO.read(
                 getClass().getResourceAsStream("/Sprites/Enemies/homework.gif")
             );
 
             sprites = new BufferedImage[3];
+            //get individual images from sprites sheet (many small images to make animations)
             for (int i=0; i<sprites.length; i++){
                 sprites[i] = spritesheet.getSubimage(i*width, 0, width, height);
             }
-        }catch(Exception e){
+            //changed to IOException instead of Exception
+        }catch(IOException e){
             e.printStackTrace();
         }
         // create new animation object and set the sprites as the frames of the animation
@@ -41,7 +46,7 @@ public class Assignment extends Enemy{
         animation.setFrames(sprites);
         animation.setDelay(300);
 
-        right = true;//slugger starts heading right
+        right = true;//assignment starts heading right
         facingRight = true;
     }
 
@@ -82,9 +87,9 @@ public class Assignment extends Enemy{
             if(elapsed>400){
                 flinching = false;
             }
-            //if it hits wall switch directions
-            //dx automatically set to 0 when hits wall MapObject
         }
+        //if it hits wall switch directions
+        //dx automatically set to 0 when hits wall MapObject
         if (right && dx == 0) {
             //hit a wall
             right=false;
@@ -99,8 +104,8 @@ public class Assignment extends Enemy{
         //update animation
         animation.update();
     }
+    //override parent class to draw assignment on screen
     public void draw(Graphics2D g){
-        //if(notOnScreen()) return;//only draw if on the screen
         setMapPosition();
         super.draw(g);
 

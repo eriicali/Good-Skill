@@ -74,6 +74,8 @@ public class TileMap
     {
         try
         {
+            //read from the tilemap file
+            //load map to the window
             InputStream in = getClass().getResourceAsStream(s);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
             numCols = Integer.parseInt(br.readLine());
@@ -129,41 +131,14 @@ public class TileMap
     }
     
     public int getType(int row, int col)
-    {
-        /*
-        if (col >= numCols)
-        {
-            System.out.println("You won!");
-            System.exit(-1);
-            return -10;
-        } else if (row >= numRows)
-        {
-            System.out.println("You fell off a cliff!");
-    
-            System.exit(-1);
-            return -10;
-    
-        }*/
+    {//returns type of tiles normal/blocked
         int rc = map[row][col];
         int r = rc / numTilesAcross;
         int c = rc % numTilesAcross;
         return tiles[r][c].getType();
-        /* try {
-            int rc = map[row][col];
-            int r = rc / numTilesAcross;
-            int c = rc % numTilesAcross;
-            return tiles[r][c].getType();
-        }catch(Exception e){
-            //this happens when you fall off a cliff
-            System.out.println("You fell off a cliff!");
-            System.exit(-1);
-            return -10;
-            //screen saying that you died
-            //go back to menu & reset game
-            //go back to menu & reset gamerilesize
-        }*/
     }
-    
+
+    //gradual shift between different animations, smoother visuals
     public void setTween(double d)
     {
         tween = d;
@@ -171,12 +146,12 @@ public class TileMap
     
     public void setPosition(double x, double y)
     {
+        //change position of tilemap as game progresses
         this.x += (x - this.x) * tween;
         this.y += (y - this.y) * tween;
         fixBounds();
         colOffset = (int) -this.x / tileSize;
         rowOffset = (int) -this.y / tileSize;
-        
     }
     
     private void fixBounds()

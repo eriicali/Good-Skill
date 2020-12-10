@@ -11,6 +11,7 @@ import Entity.Enemies.*;
 
 public class Level1State extends GameState
 {
+    //instance variables
     private TileMap tileMap;
     private Background bg;
     private Player player;
@@ -19,21 +20,25 @@ public class Level1State extends GameState
     private HUD hud;
     
     public Level1State(GameStateManager gsm){
+        //set a game state manager
         this.gsm = gsm;
         init();
     }
     
     public void init() {
+        //initialize tilemap
         tileMap = new TileMap(30);
         tileMap.loadTiles("/Backgrounds/grasstileset.gif");
         tileMap.loadMap("/Maps/level1-1.map");
         tileMap.setPosition(0, 0);
         tileMap.setTween(1);//camera speed following player
 
+        //set background image
         bg = new Background("/Backgrounds/night.gif", 0.1);
         player = new Player(tileMap);
         player.setPosition(100,100);
 
+        //instantiating MapObjects
         populateEnemies();
         explosions = new ArrayList<Explosion>();
         hud = new HUD(player);
@@ -43,6 +48,7 @@ public class Level1State extends GameState
         enemies = new ArrayList<Enemy>();
 
         Assignment assignment;
+        //set enemy positions on the screen for each enemy in ArrayList
         Point[] points = new Point[] {
             new Point(200,100),
             new Point(860,200),
@@ -50,6 +56,7 @@ public class Level1State extends GameState
             new Point(1680, 200),
             new Point(1800, 200)
         };
+        //loop through enemy ArrayList and add them to the screen
         for(int i= 0; i< points.length; i++) {
             assignment = new Assignment(tileMap);
             assignment.setPosition(points[i].x,points[i].y);
@@ -57,31 +64,35 @@ public class Level1State extends GameState
         }
 
     }
+    //update animations on the screen
     public void update() {
-        if(player.getX() > tileMap.getTileSize()*tileMap.getNumCols() -15 ) {
+        //player wins, gets to the end of the map
+        //goes here before i start a new game after i lost sometimes
+        if(player.getX() > tileMap.getWidth()-15) {
+            //set position back to default
             player.setPosition(100,100);
             System.out.println("you passed!");
+            //go to passed screen
             gsm.setState(GameStateManager.PASSSTATE);
-            player.setPosition(100,100);
         }
         else if(player.getDead()){
-            //player dies
+            //player dies because 0 health (too many enemies)
             System.out.println("You were killed by the sheer amount of assingments, looks like you took on too much :(!");
+            //reset to default value
             player.setDead(false);
             //idk why it says killed by enemies twice
             gsm.setState(GameStateManager.FAILURESTATE);
-            // System.exit(0);
-            //say that player died
-            // go back to menu screen
         }
-        else if (player.getY() > tileMap.getTileSize()*tileMap.getNumRows() -15){
+        //die by falling off cliff
+        else if (player.getY() > tileMap.getHeight()-15){
             System.out.println("You fell into a hole of procrastination!");
+            //reset to default value
             player.setDead(false);
             //idk why it says killed by enemies twice
             gsm.setState(GameStateManager.PROCRASTINATIONSTATE);
         }
+        //still playing
         else {
-
             player.update();
             tileMap.setPosition(GamePanel.WIDTH/2-player.getX(), GamePanel.HEIGHT/2-player.getY());
             //set background
@@ -89,19 +100,16 @@ public class Level1State extends GameState
             // attack enemies
             player.checkAttack(enemies);
 
-
-
-
-
             //update all enemies
             for(int i = 0; i < enemies.size(); i++){
                 Enemy e = enemies.get(i);
                 e.update();
                 if(e.getDead()) {
+                    //if killed then remove from list
                     enemies.remove(i);
                     i--;
                     explosions.add(
-                            //idk why he didnt cast
+                            //add explosion animation
                             new Explosion((int) e.getX(), (int) e.getY())
                     );
                 }
@@ -110,6 +118,7 @@ public class Level1State extends GameState
             for(int i =0; i< explosions.size(); i++){
                 Explosion e = explosions.get(i);
                 e.update();
+                //after explosion happens remove it
                 if(e.shouldRemove()) {
                     explosions.remove(i);
                     i--;
