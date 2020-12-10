@@ -97,7 +97,7 @@ public class Level1State extends GameState
             for(int i = 0; i < enemies.size(); i++){
                 Enemy e = enemies.get(i);
                 e.update();
-                if(e.isDead()) {
+                if(e.getDead()) {
                     enemies.remove(i);
                     i--;
                     explosions.add(

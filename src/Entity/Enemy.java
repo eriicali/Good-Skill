@@ -1,8 +1,8 @@
 package Entity;
 import TileMap.*;
-//keeping abstract
+// keeping abstract
 public abstract class Enemy extends MapObject{
-    //reorganize vars later, put in MapObject class
+    // reorganize vars later, put in MapObject class
     protected int health;
     protected int maxHealth;
     protected boolean dead;
@@ -14,14 +14,14 @@ public abstract class Enemy extends MapObject{
         super(tm);
     }
 
-    public boolean isDead() {
+    public boolean getDead() {
         return dead;
     }
 
     public int getDamage() {
         return damage;
     }
-
+    // this method is called when the enemy is hit by the player
     public void hit (int damage){
         if(dead||flinching) return;
         health -= damage;

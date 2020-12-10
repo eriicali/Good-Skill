@@ -5,7 +5,7 @@ import TileMap.TileMap;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
+// the assignments represent enemies
 public class Assignment extends Enemy{
     private  BufferedImage[] sprites;
     public Assignment(TileMap tm) {
@@ -15,7 +15,7 @@ public class Assignment extends Enemy{
         maxSpeed = 0.3;
         fallSpeed = 0.2;
         maxFallSpeed = 10.0;
-
+        
         width = 30;
         height = 30;
         characterWidth = 20;
@@ -36,7 +36,7 @@ public class Assignment extends Enemy{
         }catch(Exception e){
             e.printStackTrace();
         }
-
+        // create new animation object and set the sprites as the frames of the animation
         animation = new Animation();
         animation.setFrames(sprites);
         animation.setDelay(300);
@@ -46,21 +46,22 @@ public class Assignment extends Enemy{
     }
 
     private void getNextPosition(){
-        //move back and forth bw walls
-        //movement
+        // move back and forth between walls
+        // movement to the left
         if(left){
             dx -= moveSpeed;
             if(dx < -maxSpeed){
                 dx = -maxSpeed;
             }
         }
+        // movement to the right
         else if (right) {
             dx += moveSpeed;
             if (dx > maxSpeed) {
                 dx = maxSpeed;
             }
         }
-
+        // character is falling
         if (falling) {
             //if falls off cliff
             dy +=fallSpeed;
@@ -71,6 +72,7 @@ public class Assignment extends Enemy{
     public void update(){
         //update position
         getNextPosition();
+        // check if the character's coordinates are overlapping with a tile
         checkTileMapCollision();
         setPosition(xtemp, ytemp);
 

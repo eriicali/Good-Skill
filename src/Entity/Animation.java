@@ -13,6 +13,7 @@ public class Animation {
     public Animation() {
         playedOnce = false;
     }
+    // this method sets the frames of the animation by taking in an array of images
     public void setFrames(BufferedImage[] frames) {
         this.frames = frames;
         currentFrame = 0;
@@ -21,6 +22,7 @@ public class Animation {
     }
     public void setDelay(long d) {delay = d;}
     public void setFrame(int i) {currentFrame = i;}
+    // this method updates the animation by incrementing the current frame by 1
     public void update() {
         if (delay == -1) return;
         long elapsed = (System.nanoTime() - startTime) / 1000000;

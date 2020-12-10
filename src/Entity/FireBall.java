@@ -42,8 +42,10 @@ public class FireBall extends MapObject {
             e.printStackTrace();
         }
     }
+    // this method sets a hit from the fireball
     public void setHit(){
         hit = true;
+        // changes the animation frames to the hit sprites
         animation.setFrames(hitSprites);
         animation.setDelay(70);
         dx = 0;
@@ -52,7 +54,8 @@ public class FireBall extends MapObject {
     public boolean shouldRemove() {return remove;}
     
     public void update() {
-        System.out.print("x:"+x+"\n");
+        // System.out.print("x:"+x+"\n");
+        // when the fireball exits the screen, remove it from the array list
         if(x > 2449){
             remove = true;
         }
@@ -63,20 +66,16 @@ public class FireBall extends MapObject {
                 setHit();
             }
             animation.update();
-            //|| this.notOnScreen()
-            //not working bc GamePanel.Height and GamePanel.Width (320, 240) are constant ints
-            //fireball animation doesnt work once we move past GamePanel.Width number of pixels
-            //need to change notOnScreen method to account for this?
-            //|| this.notOnScreen()
-
-            // or if the end of the screen has been reached
+            // once the fireball hits the wall or enemy, remove it from the array list
+            // so the animation doesn't play more than once
             if(hit && animation.hasPlayedOnce()){
                 remove = true;
             }
         }
 
     }
-    
+    // this method draws the fireball on the screen
+    // calls the super method from the parent class MapObject (this is an example of inheritance)
     public void draw(Graphics2D g){
         setMapPosition();
         super.draw(g);
