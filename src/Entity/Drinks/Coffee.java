@@ -54,8 +54,9 @@ public class Coffee extends Beverage {
 
         // check if the character's coordinates are overlapping with a tile
         checkTileMapCollision();
-        setPosition(xtemp, ytemp);
 
+        setPosition(xtemp, ytemp);
+        //if intersects with player remove coffee and add health to the player
 
         //if it hits wall switch directions
         //dx automatically set to 0 when hits wall MapObjec

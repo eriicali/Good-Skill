@@ -154,7 +154,19 @@ public class Player extends MapObject {
         }
 
     }
+    public void checkBeverage(ArrayList<Beverage> drinks){
+        for(int i= 0; i <drinks.size(); i++) {
+            Beverage d = drinks.get(i);
+            if (intersects(d)) {
+                drinkCoffee(d.getHealth());
+            }
+        }
+    }
+    public void drinkCoffee(int increase) {
+        health += increase;
+        if (health > 5) health = 5;
 
+    }
     public void hit(int damage) {
         if(flinching) return;
         health -= damage;

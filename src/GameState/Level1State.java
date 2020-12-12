@@ -140,6 +140,7 @@ public class Level1State extends GameState
             bg.setPosition(tileMap.getX(), tileMap.getY());
             // attack enemies
             player.checkAttack(enemies);
+            player.checkBeverage(drinks);
 
             //update all enemies
             for(int i = 0; i < enemies.size(); i++){
