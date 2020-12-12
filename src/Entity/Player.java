@@ -20,7 +20,7 @@ public class Player extends MapObject {
     private boolean throwingInk;
     private int inkCost;
     private int inkBlobDamage;
-    private ArrayList<FireBall> inkBlobs;
+    private ArrayList<InkBlob> inkBlobs;
     //maybe we can do some polymorphism here later and have more than one attack
     //private ArrayList<FireBall> fireBalls;
 
@@ -68,7 +68,7 @@ public class Player extends MapObject {
         ink = maxInk = 2500;
         inkCost = 200;
         inkBlobDamage = 5;
-        inkBlobs = new ArrayList<FireBall>();
+        inkBlobs = new ArrayList<InkBlob>();
         pencilDamage = 8;
         pencilRange =40;
         try{
@@ -246,7 +246,7 @@ public class Player extends MapObject {
         if(throwingInk && currentAction != INKBLOB){
             if(ink > inkCost){
                 ink -= inkCost;
-                FireBall fb = new FireBall(tileMap, facingRight);
+                InkBlob fb = new InkBlob(tileMap, facingRight);
                 fb.setPosition(x, y);
                 inkBlobs.add(fb);
             }

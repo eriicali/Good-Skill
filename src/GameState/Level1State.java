@@ -18,7 +18,7 @@ public class Level1State extends GameState
     private Player player;
     private ArrayList<Enemy> enemies;
     private ArrayList<Beverage> drinks;
-    private ArrayList<Explosion> explosions;
+    private ArrayList<Splat> inkBlobs;
     private HUD hud;
     
     public Level1State(GameStateManager gsm){
@@ -43,7 +43,7 @@ public class Level1State extends GameState
         //instantiating MapObjects
         populateEnemies();
         populateDrinks();
-        explosions = new ArrayList<Explosion>();
+        inkBlobs = new ArrayList<Splat>();
         hud = new HUD(player);
     }
     private void populateEnemies(){
@@ -150,9 +150,9 @@ public class Level1State extends GameState
                     //if killed then remove from list
                     enemies.remove(i);
                     i--;
-                    explosions.add(
+                    inkBlobs.add(
                             //add explosion animation
-                            new Explosion((int) e.getX(), (int) e.getY())
+                            new Splat((int) e.getX(), (int) e.getY())
                     );
                 }
             }
@@ -167,12 +167,12 @@ public class Level1State extends GameState
 
             }
             //update explosions
-            for(int i =0; i< explosions.size(); i++){
-                Explosion e = explosions.get(i);
+            for(int i = 0; i< inkBlobs.size(); i++){
+                Splat e = inkBlobs.get(i);
                 e.update();
                 //after explosion happens remove it
                 if(e.shouldRemove()) {
-                    explosions.remove(i);
+                    inkBlobs.remove(i);
                     i--;
                 }
             }
@@ -197,9 +197,9 @@ public class Level1State extends GameState
             enemies.get(i).draw(g);
         }
         //draw explosions
-        for(int i = 0; i< explosions.size(); i++) {
-            explosions.get(i).setMapPosition((int)tileMap.getX(),(int)tileMap.getY());
-            explosions.get(i).draw(g);
+        for(int i = 0; i< inkBlobs.size(); i++) {
+            inkBlobs.get(i).setMapPosition((int)tileMap.getX(),(int)tileMap.getY());
+            inkBlobs.get(i).draw(g);
         }
         for(int i=0; i<drinks.size(); i++){
             drinks.get(i).draw(g);

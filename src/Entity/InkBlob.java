@@ -6,13 +6,13 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class FireBall extends MapObject {
+public class InkBlob extends MapObject {
     private boolean hit;
     private boolean remove;
     private BufferedImage[] sprites;
     private BufferedImage[] hitSprites;
     
-    public FireBall(TileMap tm, boolean right){
+    public InkBlob(TileMap tm, boolean right){
         super(tm);
         facingRight=right;
 

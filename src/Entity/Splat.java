@@ -2,7 +2,7 @@ package Entity;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
-public class Explosion {
+public class Splat {
     private int x;
     private int y;
     private int xmap;
@@ -16,7 +16,7 @@ public class Explosion {
 
     private boolean remove;
 
-    public Explosion(int x, int y) {
+    public Splat(int x, int y) {
         this.x = x;
         this.y = y;
         width = 30;
