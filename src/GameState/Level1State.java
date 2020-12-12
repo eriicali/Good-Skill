@@ -91,9 +91,9 @@ public class Level1State extends GameState
         Beverage beverage;
         //set enemy positions on the screen for each enemy in ArrayList
         Point[] points = new Point[] {
-                new Point(200,100),
-                new Point(860,200),
-                new Point(1525, 200),
+                new Point(250,100),
+                new Point(860,150),
+                new Point(1525, 150),
 
         };
         //loop through enemy ArrayList and add them to the screen
@@ -159,6 +159,11 @@ public class Level1State extends GameState
             for(int i = 0; i < drinks.size(); i++){
                 Beverage b = drinks.get(i);
                 b.update();
+                //if remove should remove
+                if(b.getPickedUp()==true) {
+                    drinks.remove(i);
+                    i--;
+                }
 
             }
             //update explosions

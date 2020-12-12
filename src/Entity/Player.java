@@ -157,8 +157,9 @@ public class Player extends MapObject {
     public void checkBeverage(ArrayList<Beverage> drinks){
         for(int i= 0; i <drinks.size(); i++) {
             Beverage d = drinks.get(i);
-            if (intersects(d)) {
+            if (intersects(d) && health < 5) {
                 drinkCoffee(d.getHealth());
+                d.pickedUp = true;
             }
         }
     }
