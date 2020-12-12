@@ -10,7 +10,6 @@ public class PassState extends GameState
     private int currentChoice = 0;
     private String[] options = {
             "Replay",
-            "Menu",
             "Quit"
     };
     private Color titleColor;
@@ -60,17 +59,15 @@ public class PassState extends GameState
             else {
                 g.setColor(titleColor);
             }
-            g.drawString(options[i], 46, 120+i*15);
+            g.drawString(options[i], 32, 120+i*15);
         }
     }
     public void select() {
         if (currentChoice == 0) {
             gsm.setState(GameStateManager.LEVEL1STATE);
         }
+
         if (currentChoice == 1) {
-            // help
-        }
-        if (currentChoice == 2) {
             System.exit(0);
         }
 

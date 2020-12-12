@@ -11,17 +11,11 @@ public class Coffee extends Beverage {
     private  BufferedImage[] sprites;
     public Coffee(TileMap tm) {
         super(tm);
-        //enemy stats
-        moveSpeed = 0.3;
-        maxSpeed = 0.3;
-        fallSpeed = 0.2;
-        maxFallSpeed = 10.0;
 
         width = 30;
         height = 30;
         characterWidth = 20;
         characterHeight = 20;
-
 
         //load sprites
         try{

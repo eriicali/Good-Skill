@@ -17,7 +17,7 @@ public class GameStateManager {
         currentState = MENUSTATE;
         levelStates.add(new MenuState(this));
         levelStates.add(new Level1State(this));
-        levelStates.add(new FailureState(this));
+        levelStates.add(new AssignmentFailureState(this));
         levelStates.add(new PassState(this));
         levelStates.add(new ProcrastinationState(this));
     }

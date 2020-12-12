@@ -4,7 +4,7 @@ import TileMap.Background;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class FailureState extends GameState
+public class AssignmentFailureState extends GameState
 {
     private Background bg;
     private int currentChoice = 0;
@@ -15,7 +15,7 @@ public class FailureState extends GameState
     private Color titleColor;
     private Font titleFont;
     private Font font;
-    public FailureState(GameStateManager gsm) {
+    public AssignmentFailureState(GameStateManager gsm) {
         this.gsm = gsm;
         try {
             bg= new Background("/Backgrounds/deathbyassignments.gif",1);
