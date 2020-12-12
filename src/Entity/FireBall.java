@@ -25,7 +25,7 @@ public class FireBall extends MapObject {
         characterHeight = 14;
         // load sprites
         try{
-            BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Sprites/Player/fireball.gif"));
+            BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Sprites/Player/inkblob.gif"));
             sprites = new BufferedImage[4];
             for(int i = 0; i < sprites.length; i++){
                 sprites[i] = spritesheet.getSubimage(i * width, 0, width, height);

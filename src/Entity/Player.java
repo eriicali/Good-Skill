@@ -73,7 +73,7 @@ public class Player extends MapObject {
         pencilRange =40;
         try{
             BufferedImage spritesheet = ImageIO.read(
-              getClass().getResourceAsStream("/Sprites/Player/playersprites.gif")
+              getClass().getResourceAsStream("/Sprites/Player/studentsprites.gif")
             );
             sprites = new ArrayList<BufferedImage[]>();
             for(int i = 0; i < 7; i++) {

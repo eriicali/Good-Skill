@@ -23,7 +23,7 @@ public class HUD {
         g.drawImage(image, 0, 10, null);
         g.setFont(font);
         g.setColor(Color.WHITE);
-        g.drawString(player.getHealth() + "/" + player.getMaxHealth(),30, 25);
-        g.drawString(player.getInk()/100 + "/" + player.getMaxInk()/100, 30, 45);
+        g.drawString(player.getHealth() + "/" + player.getMaxHealth(),20, 25);
+        g.drawString(player.getInk()/100 + "/" + player.getMaxInk()/100, 20, 45);
     }
 }
