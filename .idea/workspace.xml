@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="124f19f0-6a86-4018-a860-bd7404d6b18f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/comp-1406-project/GameState/Level1State.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/comp-1406-project/GameState/Level1State.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameState/Level1State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameState/Level1State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameState/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameState/MenuState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
