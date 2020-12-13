@@ -1,4 +1,6 @@
 package Entity;
+import Entity.Drinks.Beverage;
+import Entity.Enemies.Enemy;
 import TileMap.*;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -159,7 +161,7 @@ public class Player extends MapObject {
             Beverage d = drinks.get(i);
             if (intersects(d) && health < 5) {
                 drinkCoffee(d.getHealth());
-                d.pickedUp = true;
+                d.setPickedUp(true);
             }
         }
     }
@@ -257,7 +259,7 @@ public class Player extends MapObject {
 
 
             inkBlobs.get(i).update();
-            if(inkBlobs.get(i).shouldRemove()){
+            if(inkBlobs.get(i).getRemove()){
                 inkBlobs.remove(i);
                 i--;
             }

@@ -1,5 +1,6 @@
 package GameState;
 import Entity.*;
+import Entity.Drinks.Beverage;
 import Entity.Drinks.Coffee;
 import Main.GamePanel;
 import TileMap.Background;
@@ -152,7 +153,7 @@ public class Level1State extends GameState
                     i--;
                     inkBlobs.add(
                             //add explosion animation
-                            new Splat((int) e.getX(), (int) e.getY())
+                            new Splat((int) e.getX(), (int) e.getY(), tileMap)
                     );
                 }
             }
@@ -171,7 +172,7 @@ public class Level1State extends GameState
                 Splat e = inkBlobs.get(i);
                 e.update();
                 //after explosion happens remove it
-                if(e.shouldRemove()) {
+                if(e.getRemove()) {
                     inkBlobs.remove(i);
                     i--;
                 }
@@ -198,7 +199,8 @@ public class Level1State extends GameState
         }
         //draw explosions
         for(int i = 0; i< inkBlobs.size(); i++) {
-            inkBlobs.get(i).setMapPosition((int)tileMap.getX(),(int)tileMap.getY());
+            //call method in splat class
+            inkBlobs.get(i).setMapPosition((int)tileMap.getX(), (int)tileMap.getY());
             inkBlobs.get(i).draw(g);
         }
         for(int i=0; i<drinks.size(); i++){

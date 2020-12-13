@@ -2,9 +2,10 @@ package Entity;
 import Main.GamePanel;
 import TileMap.TileMap;
 import TileMap.Tile;
-//import javafx.animation.Animation;
-
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 //class for enemy objects, etc.
 public abstract class MapObject {
@@ -70,10 +71,38 @@ public abstract class MapObject {
     protected int tileSize;
     protected boolean remove;
 
+    private BufferedImage[] sprites;
+
     public MapObject(TileMap tm){
         //set tilemap
         tileMap = tm;
         tileSize = tm.getTileSize();
+    }
+
+    public void loadSprites(String filename){
+        //load sprites
+        try{
+            //read sprites from file
+            BufferedImage spritesheet = ImageIO.read(
+                    getClass().getResourceAsStream("/Sprites"+filename)
+            );
+
+            sprites = new BufferedImage[3];
+            //get individual images from sprites sheet (many small images to make animations)
+            for (int i=0; i<sprites.length; i++){
+                sprites[i] = spritesheet.getSubimage(i*width, 0, width, height);
+            }
+            //changed to IOException instead of Exception
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        // create new animation object and set the sprites as the frames of the animation
+        animation = new Animation();
+        animation.setFrames(sprites);
+        animation.setDelay(300);
+
+        right = true;//assignment starts heading right
+        facingRight = true;
     }
 
     //check if MapObject can collide with other MapObject
@@ -181,22 +210,6 @@ public abstract class MapObject {
         return y;
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getCwidth() {
-        return characterWidth;
-    }
-
-    public int getCheight() {
-        return characterHeight;
-    }
-
     public void setPosition(double x, double y) {
         this.x = x;
         this.y = y;
@@ -235,14 +248,7 @@ public abstract class MapObject {
         this.jumping = jumping;
     }
 
-    //whether or not object is on screen ->draw or not
-    //screen moves with player in center
-    public boolean notOnScreen(){
-        return x+ xmap + width < 0 ||
-                x + xmap - width > GamePanel.WIDTH ||
-                y + ymap + height < 0 ||
-                y + ymap - height > GamePanel.HEIGHT;
-    }
+    public abstract void update();
 
     public void draw (java.awt.Graphics2D g){
         //draw mapObject animation in direction facing

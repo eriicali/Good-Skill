@@ -23,9 +23,12 @@ public class InkBlob extends MapObject {
         height = 30;
         characterWidth = 14;
         characterHeight = 14;
-        // load sprites
+        loadSprites("/Player/inkblob.gif");
+
+    }
+    public void loadSprites(String filename){
         try{
-            BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Sprites/Player/inkblob.gif"));
+            BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Sprites"+filename));
             sprites = new BufferedImage[4];
             for(int i = 0; i < sprites.length; i++){
                 sprites[i] = spritesheet.getSubimage(i * width, 0, width, height);
@@ -42,7 +45,7 @@ public class InkBlob extends MapObject {
             e.printStackTrace();
         }
     }
-    // this method sets a hit from the fireball
+    // this method sets a hit from the inkBlob
     public void setHit(){
         hit = true;
         // changes the animation frames to the hit sprites
@@ -51,11 +54,10 @@ public class InkBlob extends MapObject {
         dx = 0;
     }
     
-    public boolean shouldRemove() {return remove;}
+    public boolean getRemove() {return remove;}
     
     public void update() {
-        // System.out.print("x:"+x+"\n");
-        // when the fireball exits the screen, remove it from the array list
+        // when the inkBlob exits the screen, remove it from the array list
         if(x > 2449){
             remove = true;
         }
@@ -66,17 +68,18 @@ public class InkBlob extends MapObject {
                 setHit();
             }
             animation.update();
-            // once the fireball hits the wall or enemy, remove it from the array list
+            // once the inkBlob hits the wall or enemy, remove it from the array list
             // so the animation doesn't play more than once
             if(hit && animation.hasPlayedOnce()){
                 remove = true;
             }
         }
-
     }
-    // this method draws the fireball on the screen
+
+    // this method draws the inkBlob on the screen
     // calls the super method from the parent class MapObject (this is an example of inheritance)
     public void draw(Graphics2D g){
+        //calls method in MapObject
         setMapPosition();
         super.draw(g);
     }
