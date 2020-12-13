@@ -32,7 +32,7 @@ public class Level1State extends GameState
         //initialize tilemap
         tileMap = new TileMap(30);
         tileMap.loadTiles("/Backgrounds/grasstileset.gif");
-        tileMap.loadMap("/Maps/level1-1.map");
+        tileMap.loadMap("/Maps/level1-2.map");
         tileMap.setPosition(0, 0);
         tileMap.setTween(1);//camera speed following player
 
@@ -108,6 +108,8 @@ public class Level1State extends GameState
     }
     //update animations on the screen
     public void update() {
+        System.out.println("X: " + (int)player.getX() / tileMap.getTileSize());
+        System.out.println("Y: " + (int)player.getY() / tileMap.getTileSize());
         //player wins, gets to the end of the map
         //goes here before i start a new game after i lost sometimes
         if(player.getX() > tileMap.getWidth()-15 && (tileMap.getWidth()-15)>0) {
