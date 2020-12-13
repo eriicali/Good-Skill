@@ -2,11 +2,12 @@ package GameState;
 
 import java.awt.*;
 
-public class NotFailState extends GameOverState {
+public abstract class NotFailState extends GameOverState {
     private Color selectionColor;
     public NotFailState(GameStateManager gsm) {
         super(gsm);
         selectionColor = new Color(156, 62, 40);
+
     }
 
     public void draw(Graphics2D g) {
@@ -21,6 +22,7 @@ public class NotFailState extends GameOverState {
             }
             g.drawString(options[i], 32, 120+i*15);
         }
+
     }
 
 }

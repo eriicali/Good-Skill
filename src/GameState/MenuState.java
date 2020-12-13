@@ -10,30 +10,17 @@ public class MenuState extends NotFailState {
         setBackground("/menubg.gif");
         options[0] = "Start";
         options[1] = "Quit";
+        titleFont = new Font("Century Gothic", Font.PLAIN, 28);
+        titleColor = new Color(207, 227, 236);
     }
 
     public void draw(Graphics2D g) {
         super.draw(g);
         // make function later to find center upper corner
+        //SET FONT
+        g.setColor(titleColor);
+        g.setFont(titleFont);
         g.drawString("Good Skill", 90, 45);
     }
-    /*
-    public void keyPressed(int key) {
-        if (key == KeyEvent.VK_ENTER){
-            select();
-        }
-        if (key == KeyEvent.VK_UP) {
-            currentChoice--;
-            if(currentChoice == -1) {
-                currentChoice = options.length-1;
-            }
-        }
-        if (key == KeyEvent.VK_DOWN){
-            currentChoice++;
-            if(currentChoice == options.length) {
-                currentChoice = 0;
-            }
-        }
-    }
-    public void keyReleased(int key) {}*/
+
 }

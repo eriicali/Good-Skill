@@ -11,14 +11,23 @@ public class PassState extends NotFailState {
         setBackground("/grades.gif");
         options[0] = "Replay";
         options[1] = "Quit";
+        titleFont = new Font("Century Gothic", Font.PLAIN, 28);
+        titleColor = new Color(207, 227, 236);
     }
+
+
+    public String getFinalGrade() {
+        return"";
+    }
+
 
     public void draw(Graphics2D g) {
         super.draw(g);
         // make function later to find center upper corner
-        g.drawString("You Passed!", 80, 30);
+        g.setColor(titleColor);
         g.drawString("Assignments: /5", 130, 45);
         g.drawString("Final Grade", 130, 58);
-    }
+        g.setFont(titleFont);
+        g.drawString("You Passed!", 80, 30);    }
 
 }
