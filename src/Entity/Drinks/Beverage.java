@@ -1,15 +1,14 @@
 package Entity.Drinks;
 import Entity.MapObject;
 import TileMap.*;
-
 import java.awt.*;
 
-// keeping abstract
+//abstract ->cant instantiate beverage, only a specific type of beverage
 public abstract class Beverage extends MapObject {
 
     protected boolean pickedUp;
     protected int health;
-
+    //initialize attributes
     public Beverage (TileMap tm){
         super(tm);
         pickedUp = false;
@@ -21,16 +20,6 @@ public abstract class Beverage extends MapObject {
         characterHeight = 20;
     }
 
-    public void setPickedUp(boolean pickedUp) {
-        this.pickedUp = pickedUp;
-    }
-
-    public boolean getPickedUp() {
-       return pickedUp;
-   }
-    public int getHealth() {
-       return health;
-   }
     public void update(){
         //put object on tilemap
         checkTileMapCollision();
@@ -40,9 +29,19 @@ public abstract class Beverage extends MapObject {
     }
     //override parent class to draw assignment on screen
     public void draw(Graphics2D g){
+        //set objects position on the map
         setMapPosition();
+        //call parent's method to handle the similar functionality
         super.draw(g);
-
     }
 
+    public void setPickedUp(boolean pickedUp) {
+        this.pickedUp = pickedUp;
+    }
+    public boolean getPickedUp() {
+        return pickedUp;
+    }
+    public int getHealth() {
+        return health;
+    }
 }

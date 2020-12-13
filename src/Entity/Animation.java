@@ -2,6 +2,7 @@ package Entity;
 import java.awt.image.BufferedImage;
 //handle sprite animation
 public class Animation {
+    //animation vars
     private BufferedImage[] frames;
     private int currentFrame;
 
@@ -20,8 +21,7 @@ public class Animation {
         startTime = System.nanoTime();
         playedOnce = false;
     }
-    public void setDelay(long d) {delay = d;}
-    public void setFrame(int i) {currentFrame = i;}
+
     // this method updates the animation by incrementing the current frame by 1
     public void update() {
         if (delay == -1) return;
@@ -35,7 +35,8 @@ public class Animation {
             playedOnce = true;
         }
     }
-    public int getFrame() { return currentFrame; }
+
     public BufferedImage getImage() { return frames[currentFrame]; }
     public boolean hasPlayedOnce() {return playedOnce; }
+    public void setDelay(long d) {delay = d;}
 }
