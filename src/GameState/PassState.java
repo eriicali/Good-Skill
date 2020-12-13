@@ -4,90 +4,21 @@ import TileMap.Background;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class PassState extends GameState
-{
-    private Background bg;
-    private int currentChoice = 0;
-    private String[] options = {
-            "Replay",
-            "Quit"
-    };
-    private Color titleColor;
-    private Font titleFont;
-    private Color selectionColor;
-    private Font subtitleFont;
-    private Font font;
+public class PassState extends NotFailState {
+    //protected String[] options;
     public PassState(GameStateManager gsm) {
-        this.gsm = gsm;
-        try {
-            bg= new Background("/Backgrounds/grades.gif",1);
-            selectionColor = new Color(156, 62, 40);
-            titleColor = new Color(207, 227, 236);
-            titleFont = new Font("Century Gothic", Font.PLAIN, 28);
-            subtitleFont  = new Font("Arial",Font.PLAIN, 11);
-            font  = new Font("Arial",Font.PLAIN, 12);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        super(gsm);
+        setBackground("/grades.gif");
+        options[0] = "Replay";
+        options[1] = "Quit";
     }
 
-
-
-    public void init() { }
-
-    public void update() {
-        bg.update();
-    }
     public void draw(Graphics2D g) {
-        bg.draw(g);
-        g.setColor(titleColor);
-        g.setFont(titleFont);
+        super.draw(g);
         // make function later to find center upper corner
         g.drawString("You Passed!", 80, 30);
-
-        g.setFont(subtitleFont);
         g.drawString("Assignments: /5", 130, 45);
         g.drawString("Final Grade", 130, 58);
-        g.setFont(font);
-        for (int i =0; i< options.length;i++){
-            if (i == currentChoice) {
-                g.setColor(selectionColor);
-                g.drawString("<-",75, 120+i*15);
-
-            }
-            else {
-                g.setColor(titleColor);
-            }
-            g.drawString(options[i], 32, 120+i*15);
-        }
     }
-    public void select() {
-        if (currentChoice == 0) {
-            gsm.setState(GameStateManager.LEVEL1STATE);
-        }
 
-        if (currentChoice == 1) {
-            System.exit(0);
-        }
-
-    }
-    public void keyPressed(int key) {
-        if (key == KeyEvent.VK_ENTER){
-            select();
-        }
-        if (key == KeyEvent.VK_UP) {
-            currentChoice--;
-            if(currentChoice == -1) {
-                currentChoice = options.length-1;
-            }
-        }
-        if (key == KeyEvent.VK_DOWN){
-            currentChoice++;
-            if(currentChoice == options.length) {
-                currentChoice = 0;
-            }
-        }
-    }
-    public void keyReleased(int key) {}
 }

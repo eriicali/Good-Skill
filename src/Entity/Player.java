@@ -22,6 +22,7 @@ public class Player extends MapObject {
     private boolean throwingInk;
     private int inkCost;
     private int inkBlobDamage;
+
     private ArrayList<InkBlob> inkBlobs;
     //maybe we can do some polymorphism here later and have more than one attack
     //private ArrayList<FireBall> fireBalls;
@@ -69,13 +70,17 @@ public class Player extends MapObject {
         health = maxHealth = 5;
         ink = maxInk = 2500;
         inkCost = 200;
-        inkBlobDamage = 5;
+        inkBlobDamage = 2;
         inkBlobs = new ArrayList<InkBlob>();
         pencilDamage = 8;
         pencilRange =40;
+        loadSprites("/Player/studentsprites.gif");
+
+    }
+    public void loadSprites(String filename){
         try{
             BufferedImage spritesheet = ImageIO.read(
-              getClass().getResourceAsStream("/Sprites/Player/studentsprites.gif")
+                    getClass().getResourceAsStream("/Sprites"+filename)
             );
             sprites = new ArrayList<BufferedImage[]>();
             for(int i = 0; i < 7; i++) {
@@ -99,17 +104,16 @@ public class Player extends MapObject {
         currentAction = IDLE;
         animation.setFrames(sprites.get(IDLE));
         animation.setDelay(400);
-
     }
+
     public int getHealth() {return health;}
     public int getMaxHealth() {return maxHealth;}
     public int getInk() {return ink;}
     public int getMaxInk() {return maxInk;}
-    public void setFiring() {
+    public void setThrowingInk() {
         throwingInk = true;
-
     }
-    public void setScratching() {
+    public void setPencilAttack() {
         pencilAttack = true;
     }
     public void setGliding(boolean b) {
@@ -160,12 +164,12 @@ public class Player extends MapObject {
         for(int i= 0; i <drinks.size(); i++) {
             Beverage d = drinks.get(i);
             if (intersects(d) && health < 5) {
-                drinkCoffee(d.getHealth());
+                drinkBeverage(d.getHealth());
                 d.setPickedUp(true);
             }
         }
     }
-    public void drinkCoffee(int increase) {
+    public void drinkBeverage(int increase) {
         health += increase;
         if (health > 5) health = 5;
 
@@ -183,7 +187,7 @@ public class Player extends MapObject {
         return dead;
     }
     public void setDead(boolean dead) {this.dead = dead;}
-    private void getNextPosition() {
+    private void findNextPosition() {
         //movement
         if(left){
             dx -= moveSpeed;
@@ -232,7 +236,7 @@ public class Player extends MapObject {
     public void update() {
         //update position
 
-        getNextPosition();
+        findNextPosition();
         checkTileMapCollision();
         setPosition(xtemp, ytemp);
         // check attack has stopped
@@ -242,7 +246,7 @@ public class Player extends MapObject {
         if(currentAction == INKBLOB){
             if(animation.hasPlayedOnce()) throwingInk = false;
         }
-        // fireball attack
+        // ink attack
         ink += 1;
         if(ink > maxInk) ink = maxInk;
         if(throwingInk && currentAction != INKBLOB){
@@ -254,10 +258,7 @@ public class Player extends MapObject {
             }
         }
         for (int i = 0; i < inkBlobs.size(); i++){
-            // do condition right here to remove ink ball if out of bounds?
-           // System.out.print("x:"+inkBlobs.get(i).getX()+"\n");
-
-
+            //do condition right here to remove ink ball if out of bounds?
             inkBlobs.get(i).update();
             if(inkBlobs.get(i).getRemove()){
                 inkBlobs.remove(i);
@@ -271,7 +272,6 @@ public class Player extends MapObject {
                 flinching = false;
             }
         }
-        
         // set animations
         if(pencilAttack) {
             if (currentAction != PENCILATTACK) {

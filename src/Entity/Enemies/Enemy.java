@@ -4,7 +4,7 @@ import TileMap.*;
 
 import java.awt.*;
 
-public abstract class Enemy extends MapObject {
+public abstract class Enemy extends MapObject{
     protected int health;
     protected int maxHealth;
     protected boolean dead;
@@ -44,7 +44,7 @@ public abstract class Enemy extends MapObject {
                 dx = maxSpeed;
             }
         }
-        // character is falling
+        // enemy is falling
         if (falling) {
             //if falls off cliff
             dy +=fallSpeed;
@@ -60,6 +60,7 @@ public abstract class Enemy extends MapObject {
         setPosition(xtemp, ytemp);
 
         //check flinching
+        //helpful for stronger enemies, take multiple hits to defeat
         if (flinching) {
             long elapsed = (System.nanoTime()-flinchTimer)/1000000;
             if(elapsed>400){

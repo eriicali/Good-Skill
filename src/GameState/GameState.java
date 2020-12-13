@@ -1,8 +1,5 @@
 package GameState;
 
-
-import java.awt.event.KeyEvent;
-
 public abstract class GameState
 {
     protected GameStateManager gsm;
