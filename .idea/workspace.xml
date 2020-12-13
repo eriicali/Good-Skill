@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="124f19f0-6a86-4018-a860-bd7404d6b18f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/comp-1406-project/GameState/Level1State.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/comp-1406-project/GameState/Level1State.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameState/Level1State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameState/Level1State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameState/PassState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameState/PassState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,19 +118,19 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="GameState" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\wudyw\Documents\GitHub\comp-1406-project\Resources" />
-      <recent name="$PROJECT_DIR$/Resources/Maps" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/HUD" />
       <recent name="$PROJECT_DIR$/Resources/Backgrounds" />
       <recent name="$PROJECT_DIR$/src/resources" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="GameState" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wudyw\Documents\GitHub\comp-1406-project\Resources" />
+      <recent name="$PROJECT_DIR$/Resources/Maps" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Game">
@@ -281,10 +283,10 @@
     <state x="1504" y="177" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1607563278354" />
     <state x="2380" y="131" key="#com.intellij.ide.util.MemberChooser/1440.23.1600.877/0.23.1440.800@1440.23.1600.877" timestamp="1607053533563" />
     <state x="2380" y="131" key="#com.intellij.ide.util.MemberChooser/1440.23.1600.877/0.23.1440.808@1440.23.1600.877" timestamp="1607214186623" />
-    <state x="1709" y="578" width="450" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1607635162803">
+    <state x="1709" y="578" width="433" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1607895921195">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1709" y="578" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1400@0.0.2560.1400" timestamp="1607635162803" />
+    <state x="1709" y="578" width="433" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1400@0.0.2560.1400" timestamp="1607895921195" />
     <state x="1708" y="607" width="430" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.2560.1417@0.23.2560.1417" timestamp="1606958243873" />
     <state x="2508" y="353" width="450" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/1440.23.1600.800/0.23.1440.877@1440.23.1600.800" timestamp="1607049383755" />
     <state x="915" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607809948867">
@@ -301,11 +303,11 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1607658544998" />
-    <state width="2517" height="174" key="GridCell.Tab.0.bottom" timestamp="1607880379736">
+    <state width="2517" height="174" key="GridCell.Tab.0.bottom" timestamp="1607895547437">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1230" height="158" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1607803016312" />
-    <state width="2517" height="174" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1607880379736" />
+    <state width="2517" height="174" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1607895547437" />
     <state width="2518" height="263" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1607568084025" />
     <state width="2087" height="296" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1607630699032" />
     <state width="904" height="143" key="GridCell.Tab.0.bottom/1440.23.1600.800/0.23.1440.877@1440.23.1600.800" timestamp="1607050135859" />
@@ -316,11 +318,11 @@
     <state width="904" height="158" key="GridCell.Tab.0.bottom/1440.23.1600.877/0.23.1440.808@1440.23.1600.877" timestamp="1607216476770" />
     <state width="904" height="143" key="GridCell.Tab.0.bottom/1440.23.1600.877/0.23.1440.811@1440.23.1600.877" timestamp="1607219150040" />
     <state width="904" height="143" key="GridCell.Tab.0.bottom/1440.23.1600.877/0.23.1440.812@1440.23.1600.877" timestamp="1607218992195" />
-    <state width="2517" height="174" key="GridCell.Tab.0.center" timestamp="1607880379735">
+    <state width="2517" height="174" key="GridCell.Tab.0.center" timestamp="1607895547437">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1230" height="158" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1607803016312" />
-    <state width="2517" height="174" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1607880379735" />
+    <state width="2517" height="174" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1607895547437" />
     <state width="2518" height="263" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1607568084024" />
     <state width="2087" height="296" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1607630699031" />
     <state width="904" height="143" key="GridCell.Tab.0.center/1440.23.1600.800/0.23.1440.877@1440.23.1600.800" timestamp="1607050135857" />
@@ -331,11 +333,11 @@
     <state width="904" height="158" key="GridCell.Tab.0.center/1440.23.1600.877/0.23.1440.808@1440.23.1600.877" timestamp="1607216476769" />
     <state width="904" height="143" key="GridCell.Tab.0.center/1440.23.1600.877/0.23.1440.811@1440.23.1600.877" timestamp="1607219150037" />
     <state width="904" height="143" key="GridCell.Tab.0.center/1440.23.1600.877/0.23.1440.812@1440.23.1600.877" timestamp="1607218992193" />
-    <state width="2517" height="174" key="GridCell.Tab.0.left" timestamp="1607880379735">
+    <state width="2517" height="174" key="GridCell.Tab.0.left" timestamp="1607895547437">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1230" height="158" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1607803016312" />
-    <state width="2517" height="174" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1607880379734" />
+    <state width="2517" height="174" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1607895547437" />
     <state width="2518" height="263" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1607568084023" />
     <state width="2087" height="296" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1607630699031" />
     <state width="904" height="143" key="GridCell.Tab.0.left/1440.23.1600.800/0.23.1440.877@1440.23.1600.800" timestamp="1607050135853" />
@@ -346,11 +348,11 @@
     <state width="904" height="158" key="GridCell.Tab.0.left/1440.23.1600.877/0.23.1440.808@1440.23.1600.877" timestamp="1607216476768" />
     <state width="904" height="143" key="GridCell.Tab.0.left/1440.23.1600.877/0.23.1440.811@1440.23.1600.877" timestamp="1607219150034" />
     <state width="904" height="143" key="GridCell.Tab.0.left/1440.23.1600.877/0.23.1440.812@1440.23.1600.877" timestamp="1607218992189" />
-    <state width="2517" height="174" key="GridCell.Tab.0.right" timestamp="1607880379735">
+    <state width="2517" height="174" key="GridCell.Tab.0.right" timestamp="1607895547437">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1230" height="158" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1607803016312" />
-    <state width="2517" height="174" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1607880379735" />
+    <state width="2517" height="174" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1607895547437" />
     <state width="2518" height="263" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1607568084024" />
     <state width="2087" height="296" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1607630699032" />
     <state width="904" height="143" key="GridCell.Tab.0.right/1440.23.1600.800/0.23.1440.877@1440.23.1600.800" timestamp="1607050135858" />

@@ -113,13 +113,12 @@ public class Level1State extends GameState
         if(player.getX() > tileMap.getWidth()-15 && (tileMap.getWidth()-15)>0) {
             //set position back to default
             player.setPosition(100,100);
-            System.out.println("you passed!");
             //go to passed screen
             gsm.setState(GameStateManager.PASSSTATE);
+
         }
         else if(player.getDead()){
             //player dies because 0 health (too many enemies)
-            System.out.println("You were killed by the sheer amount of assignments, looks like you took on too much :(!");
             //reset to default value
             player.setDead(false);
             //idk why it says killed by enemies twice
@@ -127,9 +126,8 @@ public class Level1State extends GameState
         }
         //die by falling off cliff
         else if (player.getY() > tileMap.getHeight()-15 && (tileMap.getHeight()-15)>0){
-            System.out.println("You fell into a hole of procrastination!");
             //reset to default value
-            player.setDead(false);
+            player.setPosition(100,100);
             //idk why it says killed by enemies twice
             gsm.setState(GameStateManager.PROCRASTINATIONSTATE);
         }

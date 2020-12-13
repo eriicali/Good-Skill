@@ -16,17 +16,12 @@ public class PassState extends NotFailState {
     }
 
 
-    public String getFinalGrade() {
-        return"";
-    }
 
 
     public void draw(Graphics2D g) {
         super.draw(g);
         // make function later to find center upper corner
         g.setColor(titleColor);
-        g.drawString("Assignments: /5", 130, 45);
-        g.drawString("Final Grade", 130, 58);
         g.setFont(titleFont);
         g.drawString("You Passed!", 80, 30);    }
 
