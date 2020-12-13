@@ -110,7 +110,7 @@ public class Level1State extends GameState
     public void update() {
         //player wins, gets to the end of the map
         //goes here before i start a new game after i lost sometimes
-        if(player.getX() > tileMap.getWidth()-15) {
+        if(player.getX() > tileMap.getWidth()-15 && (tileMap.getWidth()-15)>0) {
             //set position back to default
             player.setPosition(100,100);
             System.out.println("you passed!");
@@ -126,7 +126,7 @@ public class Level1State extends GameState
             gsm.setState(GameStateManager.FAILURESTATE);
         }
         //die by falling off cliff
-        else if (player.getY() > tileMap.getHeight()-15){
+        else if (player.getY() > tileMap.getHeight()-15 && (tileMap.getHeight()-15)>0){
             System.out.println("You fell into a hole of procrastination!");
             //reset to default value
             player.setDead(false);
