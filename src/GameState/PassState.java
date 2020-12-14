@@ -5,7 +5,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class PassState extends NotFailState {
-    //protected String[] options;
+    
+    // constructor
     public PassState(GameStateManager gsm) {
         super(gsm);
         setBackground("/grades.gif");
@@ -16,8 +17,8 @@ public class PassState extends NotFailState {
     }
 
 
-    // hi judy
-
+    
+    // overrides method in NotFall State
     public void draw(Graphics2D g) {
         super.draw(g);
         // make function later to find center upper corner

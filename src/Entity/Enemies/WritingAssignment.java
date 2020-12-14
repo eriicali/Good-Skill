@@ -1,18 +1,15 @@
 package Entity.Enemies;
-import Entity.*;
 import TileMap.TileMap;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
+
 
 // the assignments represent enemies
 public class WritingAssignment extends Enemy{
-    private  BufferedImage[] sprites;
+    // constructor
     public WritingAssignment(TileMap tm) {
+        // calls parent constructor
         super(tm);
+        // loads sprites
         loadSprites("/Enemies/writingassignment.gif");
-
     }
 }

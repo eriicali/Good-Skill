@@ -2,6 +2,7 @@ package GameState;
 
 import java.awt.*;
 
+//
 public abstract class NotFailState extends GameOverState {
     private Color selectionColor;
     public NotFailState(GameStateManager gsm) {
@@ -9,9 +10,10 @@ public abstract class NotFailState extends GameOverState {
         selectionColor = new Color(156, 62, 40);
 
     }
-
+    // overrides the draw() method in GameOverState
     public void draw(Graphics2D g) {
         super.draw(g);
+        //
         for (int i =0; i< options.length;i++){
             if (i == currentChoice) {
                 g.setColor(selectionColor);
