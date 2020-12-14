@@ -8,7 +8,7 @@ public class Animation {
 
     private long startTime;
     private long delay;
-
+    //only want certain animations to play once
     private boolean playedOnce;
 
     public Animation() {
@@ -25,6 +25,7 @@ public class Animation {
     // this method updates the animation by incrementing the current frame by 1
     public void update() {
         if (delay == -1) return;
+        //get elapsed time from computer's system time
         long elapsed = (System.nanoTime() - startTime) / 1000000;
         if (elapsed > delay) {
             currentFrame++;

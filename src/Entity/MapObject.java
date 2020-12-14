@@ -109,21 +109,22 @@ public abstract class MapObject {
     public boolean intersects(MapObject o){
         Rectangle r1 = getRectangle();
         Rectangle r2 = o.getRectangle();
+        //use rectangles intersects method
         return r1.intersects(r2);
     }
-
+    //helper method for above
     public Rectangle getRectangle(){
         return new Rectangle((int) x-characterWidth, (int)y-characterHeight, characterWidth, characterHeight);
     }
     
     public void calculateCorners(double x, double y){
+        //get tiles around player
         int leftTile = (int)(x-characterWidth/2)/tileSize;
         int rightTile = (int)(x+characterWidth/2-1)/tileSize;
         int topTile = (int)(y+characterHeight/2-1)/tileSize;
         int bottomTile = (int)(y+characterHeight/2-1)/tileSize;
 
         //get tile types (normal/blocked)
-        
         int tl = tileMap.getType(topTile, leftTile);
         int tr = tileMap.getType(topTile, rightTile);
         int bl = tileMap.getType(bottomTile, leftTile);
@@ -133,11 +134,11 @@ public abstract class MapObject {
         topRight = tr==Tile.BLOCKED;
         bottomLeft = bl==Tile.BLOCKED;
         bottomRight = br==Tile.BLOCKED;
-
     }
 
     //check if collided with blocked tile or normal tile
     public void checkTileMapCollision(){
+        //cur column and row
         currCol=(int)x/tileSize;
         currRow = (int)y/tileSize;
 
@@ -185,12 +186,12 @@ public abstract class MapObject {
         if(dx > 0){
             //going right
             if(topRight || bottomRight){
+                //set vector to 0 if objet hits tiles to right
                 dx = 0;
                 xtemp = (currCol + 1) * tileSize - characterWidth/2;
             }else{
                 xtemp += dx;
             }
-
         }
         if(!falling){
             //make sure player didn't fall off cliff

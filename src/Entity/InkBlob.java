@@ -74,7 +74,14 @@ public class InkBlob extends MapObject {
         }else{
             //check if the inkBlob hit another MapObject/wall
             checkTileMapCollision();
+            //sets temporary x and y values for inkBlob
+            //allows inkBlob to move forward in a straight line until it hit something
             setPosition(xtemp, ytemp);
+
+            //sets dx=0 in checkTileMapCollision() in MapObject class when it hits a wall
+            //if its dx goes to 0 bc it hit a wall and hit!=true
+            //call setHit() fucntion that will set the animation for
+            //when the inkBlob hits a wall
             if(dx == 0 && !hit){
                 setHit();
             }

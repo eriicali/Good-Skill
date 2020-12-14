@@ -7,6 +7,7 @@ import TileMap.TileMap;
 import javax.imageio.ImageIO;
 
 public class Splat extends MapObject {
+    //attributes for position on screen
     private int x;
     private int y;
     private int xmap;
@@ -46,9 +47,11 @@ public class Splat extends MapObject {
         animation.setFrames(sprites);
         animation.setDelay(70);
     }
-
+    //override parent's method
     public void update() {
         animation.update();
+        //if animation has played once can remove it from the array
+        //dont want it to play forever
         if(animation.hasPlayedOnce()) {
             remove = true;
         }
@@ -61,6 +64,8 @@ public class Splat extends MapObject {
         xmap = x;
         ymap = y;
     }
+    //override draw methods since drawing for splat is different
+    //draw image at given coordinates
     public void draw(Graphics2D g) {
         g.drawImage(
                 animation.getImage(),
