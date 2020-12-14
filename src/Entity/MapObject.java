@@ -94,6 +94,7 @@ public abstract class MapObject {
             }
             //changed to IOException instead of Exception
         }catch(IOException e){
+            System.out.println("problem loading sprites");
             e.printStackTrace();
         }
         // create new animation object and set the sprites as the frames of the animation
