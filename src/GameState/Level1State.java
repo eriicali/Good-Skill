@@ -108,8 +108,8 @@ public class Level1State extends GameState
     }
     //update animations on the screen
     public void update() {
-        System.out.println("X: " + (int)player.getX() / tileMap.getTileSize());
-        System.out.println("Y: " + (int)player.getY() / tileMap.getTileSize());
+        //System.out.println("X: " + (int)player.getX() / tileMap.getTileSize());
+        //System.out.println("Y: " + (int)player.getY() / tileMap.getTileSize());
         //player wins, gets to the end of the map
         //goes here before i start a new game after i lost sometimes
         if(player.getX() > tileMap.getWidth()-15 && (tileMap.getWidth()-15)>0) {
